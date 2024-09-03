@@ -1,4 +1,9 @@
+import MainLayout from "./pages/MainLayout";
 const App = () => {
-  return <div>App</div>;
+    return (
+        <div>
+            <MainLayout />
+        </div>
+    );
 };
 export default App;
