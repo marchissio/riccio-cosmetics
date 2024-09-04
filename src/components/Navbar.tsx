@@ -1,14 +1,16 @@
 import React, { useState, MouseEvent } from "react";
+import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import HeartIcon from "../components/HeartIcon"; 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../assets/buba.jpg";
+import { Routes } from "../enums/routes";
 
 const Navbar: React.FC = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -58,27 +60,34 @@ const Navbar: React.FC = () => {
                         justifyContent: "center",
                     }}
                 >
-                    {["HOME", "ABOUT", "SHOP", "BLOG", "PAGES", "CONTACT"].map(
-                        (text) => (
-                            <Button
-                                key={text}
-                                color="inherit"
-                                onClick={handleMenuClick}
-                                style={{
-                                    fontWeight: "bold",
-                                    color: "black",
-                                    fontFamily: "Libel Suit, sans-serif",
-                                }}
-                            >
-                                {text}
-                            </Button>
-                        )
-                    )}
+                    {Object.keys(Routes).map((key) => (
+                        <Button
+                            key={key}
+                            color="inherit"
+                            component={Link}
+                            to={Routes[key as keyof typeof Routes]}
+                            style={{
+                                fontWeight: "bold",
+                                color: "black",
+                                fontFamily: "Libel Suit, sans-serif",
+                            }}
+                        >
+                            {key}
+                        </Button>
+                    ))}
                 </Box>
 
                 <Box style={{ display: "flex", gap: "1rem" }}>
-                    <IconButton style={{ color: "black" }}>
-                        <FavoriteIcon />
+                    <IconButton>
+                        <HeartIcon
+                            style={{
+                                width: "24px",
+                                height: "24px",
+                                fill: "transparent",
+                                stroke: "black",
+                                strokeWidth: "2",
+                            }}
+                        />
                     </IconButton>
                     <IconButton style={{ color: "black" }}>
                         <ShoppingCartIcon />
@@ -90,13 +99,19 @@ const Navbar: React.FC = () => {
                     open={Boolean(anchorEl)}
                     onClose={handleMenuClose}
                 >
-                    {["HOME", "ABOUT", "SHOP", "BLOG", "PAGES", "CONTACT"].map(
-                        (text) => (
-                            <MenuItem key={text} onClick={handleMenuClose}>
-                                {text}
-                            </MenuItem>
-                        )
-                    )}
+                    {Object.keys(Routes).map((key) => (
+                        <MenuItem key={key} onClick={handleMenuClose}>
+                            <Link
+                                to={Routes[key as keyof typeof Routes]}
+                                style={{
+                                    textDecoration: "none",
+                                    color: "inherit",
+                                }}
+                            >
+                                {key}
+                            </Link>
+                        </MenuItem>
+                    ))}
                 </Menu>
             </Toolbar>
         </AppBar>
