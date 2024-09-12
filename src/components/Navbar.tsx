@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import HeartIcon from "../components/HeartIcon"; 
+import HeartIcon from "../components/HeartIcon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../assets/buba.jpg";
@@ -26,14 +26,15 @@ const Navbar: React.FC = () => {
     return (
         <AppBar
             position="fixed"
-            style={{
+            sx={{
                 backgroundColor: "#bf9b5c",
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                 zIndex: 1000,
+                fontFamily: '"Bebas Neue", sans-serif', 
             }}
         >
             <Toolbar
-                style={{
+                sx={{
                     maxWidth: "1280px",
                     margin: "0 auto",
                     display: "flex",
@@ -41,9 +42,10 @@ const Navbar: React.FC = () => {
                     justifyContent: "space-between",
                     width: "100%",
                     height: "80px",
+                    fontFamily: '"Bebas Neue", sans-serif', 
                 }}
             >
-                <Box style={{ display: "flex", alignItems: "center" }}>
+                <Box sx={{ display: "flex", alignItems: "center" }}>
                     <img
                         src={logo}
                         alt="Logo"
@@ -53,11 +55,12 @@ const Navbar: React.FC = () => {
                 </Box>
 
                 <Box
-                    style={{
+                    sx={{
                         display: "flex",
                         gap: "2rem",
                         flexGrow: 1,
                         justifyContent: "center",
+                        fontFamily: '"Bebas Neue", sans-serif', 
                     }}
                 >
                     {Object.keys(Routes).map((key) => (
@@ -66,10 +69,11 @@ const Navbar: React.FC = () => {
                             color="inherit"
                             component={Link}
                             to={Routes[key as keyof typeof Routes]}
-                            style={{
+                            sx={{
                                 fontWeight: "bold",
+                                fontSize: "1.2rem", 
                                 color: "black",
-                                fontFamily: "Libel Suit, sans-serif",
+                                fontFamily: '"Bebas Neue", sans-serif', 
                             }}
                         >
                             {key}
@@ -77,7 +81,7 @@ const Navbar: React.FC = () => {
                     ))}
                 </Box>
 
-                <Box style={{ display: "flex", gap: "1rem" }}>
+                <Box sx={{ display: "flex", gap: "1rem" }}>
                     <IconButton>
                         <HeartIcon
                             style={{
@@ -89,7 +93,7 @@ const Navbar: React.FC = () => {
                             }}
                         />
                     </IconButton>
-                    <IconButton style={{ color: "black" }}>
+                    <IconButton sx={{ color: "black" }}>
                         <ShoppingCartIcon />
                     </IconButton>
                 </Box>
@@ -106,6 +110,7 @@ const Navbar: React.FC = () => {
                                 style={{
                                     textDecoration: "none",
                                     color: "inherit",
+                                    fontFamily: '"Bebas Neue", sans-serif',  
                                 }}
                             >
                                 {key}

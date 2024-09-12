@@ -1,21 +1,25 @@
 /* Global Styles */
 body {
-    margin: 110;
+    margin: 0;
     padding: 0;
-    font-family: "Libel Suit", sans-serif;
+    font-family: "Bebas Neue", sans-serif; /* Use the new font */
 }
 
+.navbar .nav-link, .nav-link, .toolbar, .icon-button {
+    font-family: "Bebas Neue", sans-serif; /* Apply font to specific elements if needed */
+}
 
 .main-content {
     margin-top: 80px; /* Adjust this value to match the height of your navbar */
 }
 
 @font-face {
-    font-family: "Libel Suit";
-    src: url("/fonts/libel-suit.otf") format("opentype");
+    font-family: "Bebas Neue";
+    src: url("/fonts/BebasNeue-Regular.ttf") format("truetype"); /* Adjust path */
     font-weight: normal;
     font-style: normal;
 }
+
 #root {
     width: 100%; /* Set width to 100% */
     margin: 0 auto;
@@ -23,7 +27,7 @@ body {
 }
 
 .navbar .nav-link {
-    font-family: "Libel Suit", sans-serif;
+    font-family: "Bebas Neue", sans-serif; /* Change font */
 }
 
 /* Navbar Styles */
