@@ -9,6 +9,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HeartIcon from "../components/HeartIcon";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/buba.jpg";
 import { Routes } from "../enums/routes";
 
@@ -16,21 +17,21 @@ const Navbar: React.FC = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
     const handleMenuClick = (event: MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
+        setAnchorEl(event.currentTarget); 
     };
 
     const handleMenuClose = () => {
-        setAnchorEl(null);
+        setAnchorEl(null); 
     };
 
     return (
         <AppBar
-            position="fixed"
+            position="absolute"
             sx={{
                 backgroundColor: "#bf9b5c",
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                 zIndex: 1000,
-                fontFamily: '"Bebas Neue", sans-serif', 
+                fontFamily: '"Oswald", sans-serif',
             }}
         >
             <Toolbar
@@ -42,7 +43,6 @@ const Navbar: React.FC = () => {
                     justifyContent: "space-between",
                     width: "100%",
                     height: "80px",
-                    fontFamily: '"Bebas Neue", sans-serif', 
                 }}
             >
                 <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -60,7 +60,7 @@ const Navbar: React.FC = () => {
                         gap: "2rem",
                         flexGrow: 1,
                         justifyContent: "center",
-                        fontFamily: '"Bebas Neue", sans-serif', 
+                        fontFamily: '"Oswald", sans-serif',
                     }}
                 >
                     {Object.keys(Routes).map((key) => (
@@ -70,10 +70,13 @@ const Navbar: React.FC = () => {
                             component={Link}
                             to={Routes[key as keyof typeof Routes]}
                             sx={{
-                                fontWeight: "bold",
-                                fontSize: "1.2rem", 
+                                fontWeight: "600",
+                                fontSize: "16px" ,
+                                lineHeight: "30px" ,
+                                letterSpacing:
+                                    "0.25px" ,
                                 color: "black",
-                                fontFamily: '"Bebas Neue", sans-serif', 
+                                fontFamily: '"Oswald", sans-serif',
                             }}
                         >
                             {key}
@@ -96,8 +99,19 @@ const Navbar: React.FC = () => {
                     <IconButton sx={{ color: "black" }}>
                         <ShoppingCartIcon />
                     </IconButton>
+
+                    {/* Menu Button */}
+                    <IconButton
+                        edge="end"
+                        color="inherit"
+                        aria-label="menu"
+                        onClick={handleMenuClick}
+                    >
+                        <MenuIcon />
+                    </IconButton>
                 </Box>
 
+                {/* Menu Component */}
                 <Menu
                     anchorEl={anchorEl}
                     open={Boolean(anchorEl)}
@@ -110,7 +124,7 @@ const Navbar: React.FC = () => {
                                 style={{
                                     textDecoration: "none",
                                     color: "inherit",
-                                    fontFamily: '"Bebas Neue", sans-serif',  
+                                    fontFamily: '"Oswald", sans-serif',
                                 }}
                             >
                                 {key}

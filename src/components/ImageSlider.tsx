@@ -16,15 +16,11 @@ const ImageSlider: React.FC = () => {
 
     useEffect(() => {
         startSliderInterval();
-
-        return () => stopSliderInterval(); 
+        return () => stopSliderInterval();
     }, []);
 
     const startSliderInterval = () => {
-      
         stopSliderInterval();
-
-        
         intervalRef.current = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
         }, 5000);
@@ -33,7 +29,7 @@ const ImageSlider: React.FC = () => {
     const stopSliderInterval = () => {
         if (intervalRef.current) {
             clearInterval(intervalRef.current);
-            intervalRef.current = null; 
+            intervalRef.current = null;
         }
     };
 
@@ -41,25 +37,25 @@ const ImageSlider: React.FC = () => {
         setCurrentIndex((prevIndex) =>
             prevIndex === 0 ? images.length - 1 : prevIndex - 1
         );
-        startSliderInterval(); 
+        startSliderInterval();
     };
 
     const handleNextClick = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        startSliderInterval(); 
+        startSliderInterval();
     };
 
     return (
         <Box
             sx={{
                 width: "100%",
-                height: "70vh",
+                height: "calc(100vh - 80px)", // Full screen minus the height of the Navbar
                 overflow: "hidden",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 position: "relative",
-                marginTop: "80px",
+                marginTop: "80px", // Adjust to match your Navbar height
             }}
         >
             {images.map((image, index) => (
