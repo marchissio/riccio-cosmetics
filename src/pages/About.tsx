@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import RandomText from "../components/RandomText";
 
 const About: React.FC = () => {
-    return <div>About Page</div>;
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    return (
+        <>
+            <RandomText />
+        </>
+    );
 };
 
 export default About;

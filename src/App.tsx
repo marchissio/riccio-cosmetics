@@ -8,7 +8,6 @@ import Shop from "./pages/Shop";
 import Blog from "./pages/Blog";
 import Pages from "./pages/Pages";
 import Contact from "./pages/Contact";
-import RandomText from "./components/RandomText";
 
 const App: React.FC = () => {
     return (
@@ -22,7 +21,8 @@ const App: React.FC = () => {
                 <Route path="/pages" element={<Pages />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>
-            <RandomText />
+    
+         
         </Router>
     );
 };

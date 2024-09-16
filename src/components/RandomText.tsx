@@ -1,8 +1,7 @@
-import { Link, useLocation } from "react-router-dom"; // For routing and location
+import { Link, useLocation } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
-// Sample images for the right section
 import haircut from "../assets/haircut.jpg";
 import haircut1 from "../assets/haircut1.jpg";
 import haircut2 from "../assets/haircut2.jpg";
@@ -11,36 +10,33 @@ import haircut3 from "../assets/haircut3.jpg";
 const RandomText = () => {
     const location = useLocation();
 
-    // Check if the current page is Home ("/") or About ("/about")
     const showRandomText =
         location.pathname === "/" || location.pathname === "/about";
 
-    // Render the component conditionally
     if (!showRandomText) {
         return null;
     }
 
     return (
         <Box>
-            {/* Conditionally Render Thick Navbar */}
             {location.pathname === "/about" && (
                 <Box
                     sx={{
                         backgroundColor: "#0b1521",
                         color: "#fff",
-                        padding: "20px",
+                        padding: "70px",
                         textAlign: "center",
-                        fontSize: "1.5rem",
+                        fontSize: "1rem",
                         fontFamily: '"Oswald", sans-serif',
                         marginBottom: "120px",
-                        position: "absolute", // Fix it to the top
-                        top: 80, // Position it at the top
+                        position: "absolute",
+                        top: 80,
                         left: 0,
                         right: 0,
-                        zIndex: 1100, // Ensure it is above other elements
+                        zIndex: 1100,
                     }}
                 >
-                    About us
+                    <h1>About us</h1>
                     <p>Home - About</p>
                 </Box>
             )}
@@ -53,7 +49,7 @@ const RandomText = () => {
                     display: "flex",
                     flexDirection: { xs: "column", md: "row" },
                     gap: "30px",
-                    marginTop: location.pathname === "/about" ? "80px" : "0",
+                    marginTop: location.pathname === "/about" ? "330px" : "0", // Adjust marginTop on the About page
                 }}
             >
                 {/* Left Side Text */}
@@ -61,6 +57,7 @@ const RandomText = () => {
                     sx={{
                         flex: 1,
                         textAlign: { xs: "center", md: "left" },
+                        marginLeft: "80px",
                     }}
                 >
                     <h2
@@ -92,9 +89,11 @@ const RandomText = () => {
                         }}
                     >
                         We provide the best Beard oil all over the world. We are
-                        the world's best store for Beard Oil. You can buy our
-                        product without any hesitation because we always ensure
-                        our product's quality. You can trust us!
+                        the world's <br />
+                        best store for Beard Oil. You can buy our product
+                        without <br /> any hesitation because we always ensure
+                        our product's quality.
+                        <br /> You can trust us!
                     </p>
                     <p
                         style={{
@@ -105,7 +104,9 @@ const RandomText = () => {
                         }}
                     >
                         Some of our customers say that they trust us and buy our
+                        <br />
                         product without any hesitation because they believe in
+                        <br />
                         our commitment to quality.
                     </p>
                     <Button
@@ -151,7 +152,7 @@ const RandomText = () => {
                         src={haircut1}
                         alt="Haircut 1"
                         style={{
-                            width: "100%",
+                            width: "80%",
                             borderRadius: "10px",
                             objectFit: "cover",
                         }}

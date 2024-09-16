@@ -7,8 +7,8 @@ import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import HeartIcon from "../components/HeartIcon";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+// import Menu from "@mui/material/Menu";
+// import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/buba.jpg";
 import { Routes } from "../enums/routes";
@@ -101,18 +101,18 @@ const Navbar: React.FC = () => {
                     </IconButton>
 
                     {/* Menu Button */}
-                    <IconButton
+                    {/* <IconButton
                         edge="end"
                         color="inherit"
                         aria-label="menu"
                         onClick={handleMenuClick}
                     >
                         <MenuIcon />
-                    </IconButton>
+                    </IconButton> */}
                 </Box>
 
                 {/* Menu Component */}
-                <Menu
+                {/* <Menu
                     anchorEl={anchorEl}
                     open={Boolean(anchorEl)}
                     onClose={handleMenuClose}
@@ -131,7 +131,7 @@ const Navbar: React.FC = () => {
                             </Link>
                         </MenuItem>
                     ))}
-                </Menu>
+                </Menu> */}
             </Toolbar>
         </AppBar>
     );
