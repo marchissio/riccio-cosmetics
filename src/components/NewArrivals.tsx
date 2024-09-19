@@ -4,8 +4,10 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 
-// Example product images (replace these with actual product images)
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
 import product3 from "../assets/product3.jpg";
@@ -26,7 +28,7 @@ const products = [
     { id: 8, img: product8, name: "Product 8" },
 ];
 
-const ITEMS_PER_PAGE = 4; // Number of products to display per page
+const ITEMS_PER_PAGE = 4;
 
 const NewArrivals = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -94,7 +96,7 @@ const NewArrivals = () => {
                     disabled={currentIndex === 0}
                     sx={{
                         position: "absolute",
-                        left: 0,
+                        left: "10px",
                         zIndex: 1,
                         backgroundColor: "#fff",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -128,44 +130,143 @@ const NewArrivals = () => {
                             <Box
                                 key={product.id}
                                 sx={{
-                                    width: "25%", // 100% divided by 4 items
+                                    flexBasis: "calc(100% / 4 - 20px)",
                                     flexShrink: 0,
-                                    padding: "0 10px",
+                                    padding: "10px",
+                                    position: "relative",
                                 }}
                             >
+                                {/* Grey Container */}
                                 <Box
                                     sx={{
-                                        width: "60%",
-                                        height: "250px",
-                                        borderRadius: "10px",
-                                        backgroundColor: "#fff",
-                                        boxShadow:
-                                            "0 4px 12px rgba(0, 0, 0, 0.1)",
+                                        width: "100%",
+                                        height: "350px",
+                                        backgroundColor: "#f4f4f4",
                                         display: "flex",
-                                        flexDirection: "column",
-                                        alignItems: "center",
                                         justifyContent: "center",
+                                        alignItems: "center",
+                                        position: "relative",
+                                        overflow: "hidden",
+                                        transition: "transform 0.3s ease",
+                                        "&:hover .overlay": {
+                                            opacity: 1,
+                                        },
                                     }}
                                 >
-                                    <img
-                                        src={product.img}
-                                        alt={product.name}
-                                        style={{
-                                            width: "70%",
-                                            height: "150px",
-                                            objectFit: "cover",
-                                        }}
-                                    />
-                                    <Typography
+                                    {/* Product Card */}
+                                    <Box
                                         sx={{
-                                            fontFamily: '"Oswald", sans-serif',
-                                            fontWeight: "bold",
-                                            fontSize: "1rem",
-                                            marginTop: "10px",
+                                            width: "80%",
+                                            height: "90%",
+                                            backgroundColor: "#fff",
+                                            boxShadow:
+                                                "0 4px 12px rgba(0, 0, 0, 0.1)",
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            position: "relative",
                                         }}
                                     >
-                                        {product.name}
-                                    </Typography>
+                                        <img
+                                            src={product.img}
+                                            alt={product.name}
+                                            style={{
+                                                width: "70%",
+                                                height: "150px",
+                                                objectFit: "cover",
+                                            }}
+                                        />
+                                        <Typography
+                                            sx={{
+                                                fontFamily:
+                                                    '"Oswald", sans-serif',
+                                                fontWeight: "bold",
+                                                fontSize: "1rem",
+                                                marginTop: "10px",
+                                            }}
+                                        >
+                                            {product.name}
+                                        </Typography>
+
+                                        {/* Overlay with buttons */}
+                                        <Box
+                                            className="overlay"
+                                            sx={{
+                                                position: "absolute",
+                                                top: 0,
+                                                left: 0,
+                                                right: 0,
+                                                bottom: 0,
+                                                backgroundColor:
+                                                    "rgba(0, 0, 0, 0.6)",
+                                                color: "#fff",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                opacity: 0,
+                                                transition: "opacity 0.3s ease",
+
+                                                flexDirection: "column",
+                                                gap: "10px",
+                                                padding: "10px",
+                                            }}
+                                        >
+                                            <Box
+                                                sx={{
+                                                    display: "flex",
+                                                    flexDirection: "row",
+                                                    gap: "10px",
+                                                }}
+                                            >
+                                                <IconButton
+                                                    sx={{
+                                                        color: "#fff",
+                                                        backgroundColor: "#333",
+                                                        width: "40px",
+                                                        height: "40px",
+                                                        borderRadius: "0",
+                                                        "&:hover": {
+                                                            backgroundColor:
+                                                                "#555",
+                                                        },
+                                                    }}
+                                                >
+                                                    <AddShoppingCartIcon />
+                                                </IconButton>
+                                                <IconButton
+                                                    sx={{
+                                                        color: "#fff",
+                                                        backgroundColor: "#333",
+                                                        width: "40px",
+                                                        height: "40px",
+                                                        borderRadius: "0",
+                                                        "&:hover": {
+                                                            backgroundColor:
+                                                                "#555",
+                                                        },
+                                                    }}
+                                                >
+                                                    <FavoriteBorderIcon />
+                                                </IconButton>
+                                                <IconButton
+                                                    sx={{
+                                                        color: "#fff",
+                                                        backgroundColor: "#333",
+                                                        width: "40px",
+                                                        height: "40px",
+                                                        borderRadius: "0",
+                                                        "&:hover": {
+                                                            backgroundColor:
+                                                                "#555",
+                                                        },
+                                                    }}
+                                                >
+                                                    <VisibilityIcon />
+                                                </IconButton>
+                                            </Box>
+                                        </Box>
+                                    </Box>
                                 </Box>
                             </Box>
                         ))}
@@ -178,7 +279,7 @@ const NewArrivals = () => {
                     disabled={currentIndex >= products.length - ITEMS_PER_PAGE}
                     sx={{
                         position: "absolute",
-                        right: 0,
+                        right: "10px",
                         zIndex: 1,
                         backgroundColor: "#fff",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
