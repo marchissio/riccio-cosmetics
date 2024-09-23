@@ -4,9 +4,8 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import VisibilityIcon from "@mui/icons-material/Visibility";
+
+import ProductActions from "./ProductActions"; 
 
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
@@ -47,7 +46,7 @@ const NewArrivals = () => {
         <Box
             sx={{
                 padding: "50px",
-                backgroundColor: "#f9f9f9",
+                backgroundColor: "#fff",
                 textAlign: "center",
                 position: "relative",
             }}
@@ -206,65 +205,10 @@ const NewArrivals = () => {
                                                 alignItems: "center",
                                                 opacity: 0,
                                                 transition: "opacity 0.3s ease",
-
-                                                flexDirection: "column",
-                                                gap: "10px",
-                                                padding: "10px",
                                             }}
                                         >
-                                            <Box
-                                                sx={{
-                                                    display: "flex",
-                                                    flexDirection: "row",
-                                                    gap: "10px",
-                                                }}
-                                            >
-                                                <IconButton
-                                                    sx={{
-                                                        color: "#fff",
-                                                        backgroundColor: "#333",
-                                                        width: "40px",
-                                                        height: "40px",
-                                                        borderRadius: "0",
-                                                        "&:hover": {
-                                                            backgroundColor:
-                                                                "#555",
-                                                        },
-                                                    }}
-                                                >
-                                                    <AddShoppingCartIcon />
-                                                </IconButton>
-                                                <IconButton
-                                                    sx={{
-                                                        color: "#fff",
-                                                        backgroundColor: "#333",
-                                                        width: "40px",
-                                                        height: "40px",
-                                                        borderRadius: "0",
-                                                        "&:hover": {
-                                                            backgroundColor:
-                                                                "#555",
-                                                        },
-                                                    }}
-                                                >
-                                                    <FavoriteBorderIcon />
-                                                </IconButton>
-                                                <IconButton
-                                                    sx={{
-                                                        color: "#fff",
-                                                        backgroundColor: "#333",
-                                                        width: "40px",
-                                                        height: "40px",
-                                                        borderRadius: "0",
-                                                        "&:hover": {
-                                                            backgroundColor:
-                                                                "#555",
-                                                        },
-                                                    }}
-                                                >
-                                                    <VisibilityIcon />
-                                                </IconButton>
-                                            </Box>
+                                            <ProductActions />
+                                           
                                         </Box>
                                     </Box>
                                 </Box>

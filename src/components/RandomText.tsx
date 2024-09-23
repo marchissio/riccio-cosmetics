@@ -44,7 +44,7 @@ const RandomText = () => {
             <Box
                 sx={{
                     padding: "50px",
-                    backgroundColor: "#f9f9f9",
+                    backgroundColor: "#fff",
                     fontFamily: '"Oswald", sans-serif',
                     display: "flex",
                     flexDirection: { xs: "column", md: "row" },
