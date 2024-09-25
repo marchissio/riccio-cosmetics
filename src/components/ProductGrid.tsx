@@ -60,8 +60,8 @@ const ProductGrid = () => {
                 />
                 <Typography
                     sx={{
-                        fontFamily: '"Oswald", sans-serif',
-                        fontSize: "1rem",
+                        fontFamily: '"Open-sans", sans-serif',
+                        fontSize: "15px",
                         lineHeight: "1.5",
                         marginBottom: "60px",
                     }}
@@ -71,31 +71,30 @@ const ProductGrid = () => {
                     in us and are always happy to buy our products.
                 </Typography>
             </Box>
-
             <Box
                 sx={{
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: "center",
                     alignItems: "center",
-                    maxWidth: "100%",
-                    margin: "0 auto",
+                    marginLeft: "calc(-1rem / 2)", // Adjusted gap
+                    marginRight: "calc(-1rem / 2)",
                 }}
             >
                 {products.map((product) => (
                     <Box
                         key={product.id}
                         sx={{
-                            flexBasis: "calc(25% - 20px)",
-                            margin: "10px",
+                            flex: "1 0 21%", // Roughly 4 products per row
+                            margin: "0 calc(1rem / 2) 1rem", // Tighter margin for smaller gap
                             position: "relative",
                         }}
                     >
                         {/* Grey Container */}
                         <Box
                             sx={{
-                                width: "80%",
-                                height: "350px",
+                                width: "280px", // Set to a smaller width
+                                height: "350px", // Height remains the same
                                 backgroundColor: "#f4f4f4",
                                 display: "flex",
                                 justifyContent: "center",
@@ -111,7 +110,7 @@ const ProductGrid = () => {
                             {/* Product Card */}
                             <Box
                                 sx={{
-                                    width: "80%",
+                                    width: "75%", // Proportionally adjust card to fit within the smaller grey container
                                     height: "90%",
                                     backgroundColor: "#fff",
                                     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",

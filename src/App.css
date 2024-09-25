@@ -5,7 +5,10 @@ body {
     font-family: "Bebas Neue", sans-serif; /* Use the new font */
 }
 
-.navbar .nav-link, .nav-link, .toolbar, .icon-button {
+.navbar .nav-link,
+.nav-link,
+.toolbar,
+.icon-button {
     font-family: "Bebas Neue", sans-serif; /* Apply font to specific elements if needed */
 }
 
@@ -15,7 +18,14 @@ body {
 
 @font-face {
     font-family: "Bebas Neue";
-    src: url("/fonts/BebasNeue-Regular.ttf") format("truetype"); /* Adjust path */
+    src: url("/fonts/BebasNeue-Regular.ttf") format("truetype"); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Oswald";
+    src: url("/fonts/Oswald-VariableFont_wght.ttf") format("truetype"); 
     font-weight: normal;
     font-style: normal;
 }
@@ -71,5 +81,3 @@ body {
     display: flex; /* Horizontal layout for icons */
     gap: 1rem; /* Space between icons */
 }
-
- 

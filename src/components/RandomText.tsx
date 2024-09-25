@@ -43,7 +43,10 @@ const RandomText = () => {
 
             <Box
                 sx={{
-                    padding: "50px",
+                    paddingLeft: "250px",
+                    paddingRight: "250px",
+                    paddingTop: "100px",
+                    paddingBottom: "100px",
                     backgroundColor: "#fff",
                     fontFamily: '"Oswald", sans-serif',
                     display: "flex",
@@ -65,7 +68,7 @@ const RandomText = () => {
                             fontFamily: "Oswald, sans-serif",
                             fontWeight: "600",
                             fontSize: "1.5rem",
-                            marginBottom: "5px",
+                            marginBottom: "-20px",
                         }}
                     >
                         Provide the best
@@ -75,15 +78,14 @@ const RandomText = () => {
                             fontFamily: "Oswald, sans-serif",
                             fontWeight: "bold",
                             fontSize: "3rem",
-                            marginBottom: "20px",
                         }}
                     >
                         Beard Oil For You
                     </h1>
                     <p
                         style={{
-                            fontFamily: "Open Sans, sans-serif",
-                            fontSize: "1.1rem",
+                            fontFamily: '"Open-sans", sans-serif',
+                            fontSize: "15px",
                             marginBottom: "20px",
                             lineHeight: "1.6",
                         }}
@@ -97,8 +99,8 @@ const RandomText = () => {
                     </p>
                     <p
                         style={{
-                            fontFamily: "Open Sans, sans-serif",
-                            fontSize: "1.1rem",
+                            fontFamily: '"Open-sans", sans-serif',
+                            fontSize: "15px",
                             marginBottom: "20px",
                             lineHeight: "1.6",
                         }}

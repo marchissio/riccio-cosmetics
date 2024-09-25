@@ -5,7 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-import ProductActions from "./ProductActions"; 
+import ProductActions from "./ProductActions";
 
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
@@ -67,14 +67,14 @@ const NewArrivals = () => {
             <Typography
                 variant="body1"
                 sx={{
-                    fontFamily: '"Open Sans", sans-serif',
-                    fontSize: "1.1rem",
+                    fontFamily: '"Open-sans", sans-serif',
+                    fontSize: "15px",
                     marginBottom: "40px",
                 }}
             >
                 Some of our customers say that they trust us and buy our product
-                without any hesitation because they believe in us and are always
-                happy to buy our products.
+                without any <br /> hesitation because they believe in us and are
+                always happy to buy our products.
             </Typography>
 
             {/* Product Container */}
@@ -138,7 +138,7 @@ const NewArrivals = () => {
                                 {/* Grey Container */}
                                 <Box
                                     sx={{
-                                        width: "100%",
+                                        width: "95%",
                                         height: "350px",
                                         backgroundColor: "#f4f4f4",
                                         display: "flex",
@@ -208,7 +208,6 @@ const NewArrivals = () => {
                                             }}
                                         >
                                             <ProductActions />
-                                           
                                         </Box>
                                     </Box>
                                 </Box>
