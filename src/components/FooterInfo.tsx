@@ -66,7 +66,7 @@ const FooterServices: React.FC = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                maxWidth: "95%",
+                maxWidth: "1350px",
                 margin: "auto",
                 border: "2px solid #ebebeb",
             }}

@@ -1,6 +1,9 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import { Box, Typography } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import ProductActions from "./ProductActions";
+import { RootState } from "../store/store";
+import { toggleFavorite } from "../store/favoriteSlice";
+import { Product } from "./interface/types.ts";
 
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
@@ -11,18 +14,28 @@ import product6 from "../assets/product6.jpg";
 import product7 from "../assets/product7.jpg";
 import product8 from "../assets/product8.jpg";
 
-const products = [
-    { id: 1, img: product1, name: "Product 1" },
-    { id: 2, img: product2, name: "Product 2" },
-    { id: 3, img: product3, name: "Product 3" },
-    { id: 4, img: product4, name: "Product 4" },
-    { id: 5, img: product5, name: "Product 5" },
-    { id: 6, img: product6, name: "Product 6" },
-    { id: 7, img: product7, name: "Product 7" },
-    { id: 8, img: product8, name: "Product 8" },
+const products: Product[] = [
+    { id: 1, name: "Product 1", price: 10, quantity: 1, img: product1 },
+    { id: 2, name: "Product 2", price: 15, quantity: 1, img: product2 },
+    { id: 3, name: "Product 3", price: 20, quantity: 1, img: product3 },
+    { id: 4, name: "Product 4", price: 25, quantity: 1, img: product4 },
+    { id: 5, name: "Product 5", price: 30, quantity: 1, img: product5 },
+    { id: 6, name: "Product 6", price: 35, quantity: 1, img: product6 },
+    { id: 7, name: "Product 7", price: 40, quantity: 1, img: product7 },
+    { id: 8, name: "Product 8", price: 45, quantity: 1, img: product8 },
 ];
 
 const ProductGrid = () => {
+    const dispatch = useDispatch();
+    const favorites = useSelector((state: RootState) => state.favorites.items);
+
+    const isProductFavorited = (id: number) => {
+        return favorites.some((item) => item.id === id);
+    };
+
+    const handleToggleFavorite = (product: any) => {
+        dispatch(toggleFavorite(product));
+    };
     return (
         <Box
             sx={{
@@ -77,7 +90,7 @@ const ProductGrid = () => {
                     flexWrap: "wrap",
                     justifyContent: "center",
                     alignItems: "center",
-                    marginLeft: "calc(-1rem / 2)", // Adjusted gap
+                    marginLeft: "calc(-1rem / 2)",
                     marginRight: "calc(-1rem / 2)",
                 }}
             >
@@ -85,16 +98,16 @@ const ProductGrid = () => {
                     <Box
                         key={product.id}
                         sx={{
-                            flex: "1 0 21%", // Roughly 4 products per row
-                            margin: "0 calc(1rem / 2) 1rem", // Tighter margin for smaller gap
+                            flex: "1 0 21%",
+                            margin: "0 calc(1rem / 2) 1rem",
                             position: "relative",
                         }}
                     >
                         {/* Grey Container */}
                         <Box
                             sx={{
-                                width: "280px", // Set to a smaller width
-                                height: "350px", // Height remains the same
+                                width: "280px",
+                                height: "350px",
                                 backgroundColor: "#f4f4f4",
                                 display: "flex",
                                 justifyContent: "center",
@@ -110,7 +123,7 @@ const ProductGrid = () => {
                             {/* Product Card */}
                             <Box
                                 sx={{
-                                    width: "75%", // Proportionally adjust card to fit within the smaller grey container
+                                    width: "75%",
                                     height: "90%",
                                     backgroundColor: "#fff",
                                     boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
@@ -141,7 +154,6 @@ const ProductGrid = () => {
                                     {product.name}
                                 </Typography>
 
-                                {/* Overlay with buttons */}
                                 <Box
                                     className="overlay"
                                     sx={{
@@ -159,7 +171,13 @@ const ProductGrid = () => {
                                         transition: "opacity 0.3s ease",
                                     }}
                                 >
-                                    <ProductActions />
+                                    <ProductActions
+                                        product={product}
+                                        isFavorited={isProductFavorited(
+                                            product.id
+                                        )}
+                                        onToggleFavorite={handleToggleFavorite}
+                                    />
                                 </Box>
                             </Box>
                         </Box>

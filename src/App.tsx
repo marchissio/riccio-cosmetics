@@ -8,6 +8,7 @@ import Shop from "./pages/Shop";
 import Blog from "./pages/Blog";
 import Pages from "./pages/Pages";
 import Contact from "./pages/Contact";
+import Wishlist from "./pages/WishlistPage";
 
 const App: React.FC = () => {
     return (
@@ -20,9 +21,8 @@ const App: React.FC = () => {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/pages" element={<Pages />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/wishlist" element={<Wishlist />} />
             </Routes>
-    
-         
         </Router>
     );
 };

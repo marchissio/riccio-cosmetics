@@ -1,28 +1,34 @@
-import React, { useState, MouseEvent } from "react";
-import { Link } from "react-router-dom";
+// Navbar.tsx
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Badge from "@mui/material/Badge";
 import HeartIcon from "../components/HeartIcon";
-// import Menu from "@mui/material/Menu";
-// import MenuItem from "@mui/material/MenuItem";
-// import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/buba.jpg";
 import { Routes } from "../enums/routes";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store/store";
+import { loadFavorites } from "../store/favoriteSlice";
 
 const Navbar: React.FC = () => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const navigate = useNavigate(); // Initialize navigate
+    const dispatch = useDispatch();
 
-    const handleMenuClick = (event: MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget); 
-    };
+    useEffect(() => {
+        dispatch(loadFavorites());
+    }, [dispatch]);
 
-    const handleMenuClose = () => {
-        setAnchorEl(null); 
-    };
+    const favoriteProducts = useSelector(
+        (state: RootState) => state.favorites.items
+    );
+    const favoriteCount = favoriteProducts.length;
+
+    const handleOpenWishlist = () => navigate("/wishlist"); // Navigate to the wishlist page
 
     return (
         <AppBar
@@ -71,12 +77,12 @@ const Navbar: React.FC = () => {
                             to={Routes[key as keyof typeof Routes]}
                             sx={{
                                 fontWeight: "600",
-                                fontSize: "16px" ,
-                                lineHeight: "30px" ,
-                                letterSpacing:
-                                    "0.25px" ,
+                                fontSize: "16px",
+                                lineHeight: "30px",
+                                letterSpacing: "0.50px",
                                 color: "black",
                                 fontFamily: '"Oswald", sans-serif',
+                                padding: "25px 0",
                             }}
                         >
                             {key}
@@ -85,53 +91,25 @@ const Navbar: React.FC = () => {
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem" }}>
-                    <IconButton>
-                        <HeartIcon
-                            style={{
-                                width: "24px",
-                                height: "24px",
-                                fill: "transparent",
-                                stroke: "black",
-                                strokeWidth: "2",
-                            }}
-                        />
+                    <IconButton onClick={handleOpenWishlist}>
+                        {" "}
+                        {/* Change here */}
+                        <Badge badgeContent={favoriteCount} color="error">
+                            <HeartIcon
+                                style={{
+                                    width: "24px",
+                                    height: "24px",
+                                    fill: "transparent",
+                                    stroke: "black",
+                                    strokeWidth: "2",
+                                }}
+                            />
+                        </Badge>
                     </IconButton>
                     <IconButton sx={{ color: "black" }}>
                         <ShoppingCartIcon />
                     </IconButton>
-
-                    {/* Menu Button */}
-                    {/* <IconButton
-                        edge="end"
-                        color="inherit"
-                        aria-label="menu"
-                        onClick={handleMenuClick}
-                    >
-                        <MenuIcon />
-                    </IconButton> */}
                 </Box>
-
-                {/* Menu Component */}
-                {/* <Menu
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleMenuClose}
-                >
-                    {Object.keys(Routes).map((key) => (
-                        <MenuItem key={key} onClick={handleMenuClose}>
-                            <Link
-                                to={Routes[key as keyof typeof Routes]}
-                                style={{
-                                    textDecoration: "none",
-                                    color: "inherit",
-                                    fontFamily: '"Oswald", sans-serif',
-                                }}
-                            >
-                                {key}
-                            </Link>
-                        </MenuItem>
-                    ))}
-                </Menu> */}
             </Toolbar>
         </AppBar>
     );
