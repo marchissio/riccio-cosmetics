@@ -15,14 +15,14 @@ import product7 from "../assets/product7.jpg";
 import product8 from "../assets/product8.jpg";
 
 const products: Product[] = [
-    { id: 1, name: "Product 1", price: 10, quantity: 1, img: product1 },
-    { id: 2, name: "Product 2", price: 15, quantity: 1, img: product2 },
-    { id: 3, name: "Product 3", price: 20, quantity: 1, img: product3 },
-    { id: 4, name: "Product 4", price: 25, quantity: 1, img: product4 },
-    { id: 5, name: "Product 5", price: 30, quantity: 1, img: product5 },
-    { id: 6, name: "Product 6", price: 35, quantity: 1, img: product6 },
-    { id: 7, name: "Product 7", price: 40, quantity: 1, img: product7 },
-    { id: 8, name: "Product 8", price: 45, quantity: 1, img: product8 },
+    { id: 1, name: "Product1", price: 10, quantity: 1, img: product1 },
+    { id: 2, name: "Product2", price: 15, quantity: 1, img: product2 },
+    { id: 3, name: "Product3", price: 20, quantity: 1, img: product3 },
+    { id: 4, name: "Product4", price: 25, quantity: 1, img: product4 },
+    { id: 5, name: "Product5", price: 30, quantity: 1, img: product5 },
+    { id: 6, name: "Product6", price: 35, quantity: 1, img: product6 },
+    { id: 7, name: "Product7", price: 40, quantity: 1, img: product7 },
+    { id: 8, name: "Product8", price: 45, quantity: 1, img: product8 },
 ];
 
 const ProductGrid = () => {

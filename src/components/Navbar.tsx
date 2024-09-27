@@ -92,8 +92,6 @@ const Navbar: React.FC = () => {
 
                 <Box sx={{ display: "flex", gap: "1rem" }}>
                     <IconButton onClick={handleOpenWishlist}>
-                        {" "}
-                        {/* Change here */}
                         <Badge badgeContent={favoriteCount} color="error">
                             <HeartIcon
                                 style={{

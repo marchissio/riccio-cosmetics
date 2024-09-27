@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/favoriteSlice";
 import ProductActions from "./ProductActions";
-import { Product } from "./interface/types.ts";
+import { Product } from "./interface/types"; 
 
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
@@ -19,16 +19,15 @@ import product7 from "../assets/product7.jpg";
 import product8 from "../assets/product8.jpg";
 import { RootState } from "../store/store";
 
-
 const products: Product[] = [
-    { id: 1, name: "Product 1", price: 10,  img: product1 },
-    { id: 2, name: "Product 2", price: 15,  img: product2 },
-    { id: 3, name: "Product 3", price: 20, img: product3 },
-    { id: 4, name: "Product 4", price: 25,  img: product4 },
-    { id: 5, name: "Product 5", price: 30,  img: product5 },
-    { id: 6, name: "Product 6", price: 35,  img: product6 },
-    { id: 7, name: "Product 7", price: 40,  img: product7 },
-    { id: 8, name: "Product 8", price: 45, img: product8 },
+    { id: 1, name: "Product1", price: 10, img: product1 },
+    { id: 2, name: "Product2", price: 15, img: product2 },
+    { id: 3, name: "Product3", price: 20, img: product3 },
+    { id: 4, name: "Product4", price: 25, img: product4 },
+    { id: 5, name: "Product5", price: 30, img: product5 },
+    { id: 6, name: "Product6", price: 35, img: product6 },
+    { id: 7, name: "Product7", price: 40, img: product7 },
+    { id: 8, name: "Product8", price: 45, img: product8 },
 ];
 
 const ITEMS_PER_PAGE = 4;
@@ -47,6 +46,7 @@ const NewArrivals = () => {
             Math.min(prevIndex + 1, products.length - ITEMS_PER_PAGE)
         );
     };
+
     const handleToggleFavorite = (product: Product) => {
         dispatch(toggleFavorite(product));
     };
@@ -138,11 +138,12 @@ const NewArrivals = () => {
                                     flexShrink: 0,
                                     padding: "10px",
                                     position: "relative",
+                                    marginLeft:'10px'
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        width: "95%",
+                                        width: "82%",
                                         height: "350px",
                                         backgroundColor: "#f4f4f4",
                                         display: "flex",
@@ -158,7 +159,7 @@ const NewArrivals = () => {
                                 >
                                     <Box
                                         sx={{
-                                            width: "80%",
+                                            width: "75%",
                                             height: "90%",
                                             backgroundColor: "#fff",
                                             boxShadow:
@@ -190,6 +191,19 @@ const NewArrivals = () => {
                                         >
                                             {product.name}
                                         </Typography>
+                                        {product.price && (
+                                            <Typography
+                                                sx={{
+                                                    fontFamily:
+                                                        '"Open-sans", sans-serif',
+                                                    fontSize: "0.9rem",
+                                                    color: "#333",
+                                                    marginTop: "5px",
+                                                }}
+                                            >
+                                                ${product.price.toFixed(2)}
+                                            </Typography>
+                                        )}
 
                                         <Box
                                             className="overlay"
@@ -210,11 +224,7 @@ const NewArrivals = () => {
                                             }}
                                         >
                                             <ProductActions
-                                                product={{
-                                                    id: product.id,
-                                                    name: product.name,
-                                                    img: product.img,
-                                                }}
+                                                product={product}
                                                 isFavorited={favorites.some(
                                                     (item) =>
                                                         item.id === product.id

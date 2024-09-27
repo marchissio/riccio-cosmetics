@@ -13,19 +13,23 @@ body {
 }
 
 .main-content {
-    margin-top: 80px; /* Adjust this value to match the height of your navbar */
+    margin-top: 80px;
+}
+
+.css-1ruxp1v {
+    padding: 0 !important;
 }
 
 @font-face {
     font-family: "Bebas Neue";
-    src: url("/fonts/BebasNeue-Regular.ttf") format("truetype"); 
+    src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Oswald";
-    src: url("/fonts/Oswald-VariableFont_wght.ttf") format("truetype"); 
+    src: url("/fonts/Oswald-VariableFont_wght.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }

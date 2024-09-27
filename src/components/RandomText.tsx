@@ -52,7 +52,7 @@ const RandomText = () => {
                     display: "flex",
                     flexDirection: { xs: "column", md: "row" },
                     gap: "30px",
-                    marginTop: location.pathname === "/about" ? "330px" : "0", // Adjust marginTop on the About page
+                    marginTop: location.pathname === "/about" ? "330px" : "0", 
                 }}
             >
                 {/* Left Side Text */}

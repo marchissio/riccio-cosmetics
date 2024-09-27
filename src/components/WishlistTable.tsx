@@ -9,108 +9,167 @@ import {
     Paper,
     Button,
     IconButton,
+    Box,
+    Typography,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/favoriteSlice";
 import { addToCart } from "../store/cartSlice";
-
-interface WishlistItem {
-    id: number;
-    name: string;
-    price?: number;
-    quantity: number;
-    image: string; 
-}
+import { Product } from "../components/interface/types";
 
 interface WishlistTableProps {
-    wishlist: WishlistItem[];
+    wishlist: Product[];
 }
 
 const WishlistTable: React.FC<WishlistTableProps> = ({ wishlist }) => {
     const dispatch = useDispatch();
 
-    const handleAddToCart = (item: WishlistItem) => {
+    const handleAddToCart = (item: Product) => {
         dispatch(
             addToCart({
                 id: item.id,
                 name: item.name,
                 price: item.price || 0,
-                quantity: item.quantity,
-                img: item.image, 
+                quantity: 1,
+                img: item.img,
             })
         );
     };
 
-    const handleRemoveFromWishlist = (id: number) => {
-        const itemToRemove = wishlist.find((item) => item.id === id);
-        if (itemToRemove) {
-            dispatch(
-                toggleFavorite({
-                    id: itemToRemove.id,
-                    name: itemToRemove.name,
-                    price: itemToRemove.price || 0, 
-                    quantity: itemToRemove.quantity,
-                    img: itemToRemove.image, 
-                })
-            );
-        }
+    const handleRemoveFromWishlist = (item: Product) => {
+        dispatch(
+            toggleFavorite({
+                id: item.id,
+                name: item.name,
+                price: item.price || 0,
+                img: item.img,
+            })
+        );
     };
 
     return (
-        <TableContainer component={Paper}>
-            <Table aria-label="wishlist table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Image</TableCell>
-                        <TableCell>Product</TableCell>
-                        <TableCell>Price</TableCell>
-                        <TableCell>Quantity</TableCell>
-                        <TableCell>Add to Cart</TableCell>
-                        <TableCell>Remove</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {wishlist.map((item) => (
-                        <TableRow key={item.id}>
-                            <TableCell>
-                                <img
-                                    src={item.image}
-                                    alt={item.name}
-                                    style={{ width: "50px", height: "50px" }}
-                                />
+        <Box>
+            {/* Wishlist Table */}
+            <TableContainer
+                component={Paper}
+                sx={{ maxWidth: "1200px", margin: "auto", border: "0" }}
+            >
+                <Table
+                    aria-label="wishlist table"
+                    sx={{ borderCollapse: "collapse", border: "0" }}
+                >
+                    <TableHead>
+                        <TableRow>
+                            <TableCell
+                                sx={{
+                                    backgroundColor: "#212529",
+                                    color: "white",
+                                }}
+                            >
+                                Image
                             </TableCell>
-                            <TableCell>{item.name}</TableCell>
-                            <TableCell>
-                                {item.price !== undefined
-                                    ? `$${item.price.toFixed(2)}`
-                                    : "N/A"}
+                            <TableCell
+                                sx={{
+                                    backgroundColor: "#212529",
+                                    color: "white",
+                                }}
+                            >
+                                Product
                             </TableCell>
-                            <TableCell>{item.quantity}</TableCell>
-                            <TableCell>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    onClick={() => handleAddToCart(item)}
-                                >
-                                    Add to Cart
-                                </Button>
+                            <TableCell
+                                sx={{
+                                    backgroundColor: "#212529",
+                                    color: "white",
+                                }}
+                            >
+                                Price
                             </TableCell>
-                            <TableCell>
-                                <IconButton
-                                    color="secondary"
-                                    onClick={() =>
-                                        handleRemoveFromWishlist(item.id)
-                                    }
-                                >
-                                    <DeleteIcon />
-                                </IconButton>
+                            <TableCell
+                                sx={{
+                                    backgroundColor: "#212529",
+                                    color: "white",
+                                }}
+                            >
+                                Quantity
+                            </TableCell>
+                            <TableCell
+                                sx={{
+                                    backgroundColor: "#212529",
+                                    color: "white",
+                                }}
+                            >
+                                Add to Cart
+                            </TableCell>
+                            <TableCell
+                                sx={{
+                                    backgroundColor: "#212529",
+                                    color: "white",
+                                }}
+                            >
+                                Remove
                             </TableCell>
                         </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+                    </TableHead>
+                    <TableBody>
+                        {wishlist.length === 0 ? (
+                            <TableRow>
+                                <TableCell
+                                    colSpan={6}
+                                    sx={{ textAlign: "center" }}
+                                >
+                                    No products in your wishlist.
+                                </TableCell>
+                            </TableRow>
+                        ) : (
+                            wishlist.map((item: Product) => (
+                                <TableRow key={item.id}>
+                                    <TableCell>
+                                        <img
+                                            src={item.img}
+                                            alt={item.name}
+                                            style={{
+                                                width: "50px",
+                                                height: "50px",
+                                            }}
+                                        />
+                                    </TableCell>
+                                    <TableCell>{item.name}</TableCell>
+                                    <TableCell>
+                                        {item.price !== undefined
+                                            ? `$${item.price.toFixed(2)}`
+                                            : "N/A"}
+                                    </TableCell>
+                                    <TableCell>1</TableCell>{" "}
+                                    {/* Default to 1 quantity in the wishlist */}
+                                    <TableCell>
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={() =>
+                                                handleAddToCart(item)
+                                            }
+                                        >
+                                            Add to Cart
+                                        </Button>
+                                    </TableCell>
+                                    <TableCell>
+                                        <IconButton
+                                            color="error"
+                                            onClick={() =>
+                                                handleRemoveFromWishlist(item)
+                                            }
+                                        >
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </TableCell>
+                                </TableRow>
+                            ))
+                        )}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Box>
     );
 };
 
