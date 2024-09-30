@@ -20,14 +20,14 @@ import product8 from "../assets/product8.jpg";
 import { RootState } from "../store/store";
 
 const products: Product[] = [
-    { id: 1, name: "Product1", price: 10, img: product1 },
-    { id: 2, name: "Product2", price: 15, img: product2 },
-    { id: 3, name: "Product3", price: 20, img: product3 },
-    { id: 4, name: "Product4", price: 25, img: product4 },
-    { id: 5, name: "Product5", price: 30, img: product5 },
-    { id: 6, name: "Product6", price: 35, img: product6 },
-    { id: 7, name: "Product7", price: 40, img: product7 },
-    { id: 8, name: "Product8", price: 45, img: product8 },
+    { id: 1, name: "Product 1", price: 10, img: product1 },
+    { id: 2, name: "Product 2", price: 15, img: product2 },
+    { id: 3, name: "Product 3", price: 20, img: product3 },
+    { id: 4, name: "Product 4", price: 25, img: product4 },
+    { id: 5, name: "Product 5", price: 30, img: product5 },
+    { id: 6, name: "Product 6", price: 35, img: product6 },
+    { id: 7, name: "Product 7", price: 40, img: product7 },
+    { id: 8, name: "Product 8", price: 45, img: product8 },
 ];
 
 const ITEMS_PER_PAGE = 4;

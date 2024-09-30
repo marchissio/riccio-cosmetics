@@ -6,6 +6,7 @@ import haircut from "../assets/haircut.jpg";
 import haircut1 from "../assets/haircut1.jpg";
 import haircut2 from "../assets/haircut2.jpg";
 import haircut3 from "../assets/haircut3.jpg";
+import PageHeader from "./PageHeader";
 
 const RandomText = () => {
     const location = useLocation();
@@ -20,39 +21,21 @@ const RandomText = () => {
     return (
         <Box>
             {location.pathname === "/about" && (
-                <Box
-                    sx={{
-                        backgroundColor: "#0b1521",
-                        color: "#fff",
-                        padding: "70px",
-                        textAlign: "center",
-                        fontSize: "1rem",
-                        fontFamily: '"Oswald", sans-serif',
-                        marginBottom: "120px",
-                        position: "absolute",
-                        top: 80,
-                        left: 0,
-                        right: 0,
-                        zIndex: 1100,
-                    }}
-                >
-                    <h1>About us</h1>
-                    <p>Home - About</p>
-                </Box>
+                <PageHeader title="About Us" subtitle="Home - About" />
             )}
 
             <Box
                 sx={{
                     paddingLeft: "250px",
                     paddingRight: "250px",
-                    paddingTop: "100px",
+                    paddingTop: "120px",
                     paddingBottom: "100px",
                     backgroundColor: "#fff",
                     fontFamily: '"Oswald", sans-serif',
                     display: "flex",
                     flexDirection: { xs: "column", md: "row" },
                     gap: "30px",
-                    marginTop: location.pathname === "/about" ? "330px" : "0", 
+                    marginTop: location.pathname === "/about" ? "-100px" : "0",
                 }}
             >
                 {/* Left Side Text */}

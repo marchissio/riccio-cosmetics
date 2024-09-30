@@ -2,8 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import WishlistTable from "../components/WishlistTable";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { Product } from "../components/interface/types";
+import PageHeader from "../components/PageHeader"; 
 
 const WishlistPage: React.FC = () => {
     const wishlistItems = useSelector(
@@ -11,33 +12,25 @@ const WishlistPage: React.FC = () => {
     );
 
     return (
-        <Box sx={{ padding: "0px", paddingTop: "55px" }}>
-            {/* Navbar - Always visible */}
-            <Box
-                sx={{
-                    backgroundColor: "#0b1521",
-                    color: "#fff",
-                    padding: "100px",
-                    textAlign: "center",
-                    fontSize: "1rem",
-                    fontFamily: '"Oswald", sans-serif !important',
-                    marginBottom: "5rem",
-                }}
-            >
-                <Typography
-                    variant="h2"
-                    sx={{ fontFamily: '"Oswald", sans-serif' }}
-                >
-                    Wishlist
-                </Typography>
-                <Typography variant="body1">Home - Wishlist</Typography>
-            </Box>
+        <Box>
+            <PageHeader title="Wishlist" subtitle="Home - Wishlist" />
 
-            {wishlistItems.length > 0 ? (
-                <WishlistTable wishlist={wishlistItems as Product[]} />
-            ) : (
-                <Typography>No items in your wishlist.</Typography>
-            )}
+            <Box sx={{ marginTop: "100px" }}>
+                {wishlistItems.length > 0 ? (
+                    <WishlistTable wishlist={wishlistItems as Product[]} />
+                ) : (
+                    <h2
+                        style={{
+                            textAlign: "center",
+                            fontFamily: '"Oswald", sans-serif',
+                            fontSize: "2rem",
+                            marginTop: "180px",
+                        }}
+                    >
+                        No items in your wishlist.
+                    </h2>
+                )}
+            </Box>
         </Box>
     );
 };

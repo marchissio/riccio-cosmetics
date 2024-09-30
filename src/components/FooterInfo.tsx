@@ -60,14 +60,16 @@ const FooterServices: React.FC = () => {
                 backgroundColor: "#ffffff",
                 borderRadius: "150px",
                 padding: "25px",
-                marginBottom: "-90px",
+                marginTop: "150px",
+                marginBottom: "25px",
                 position: "relative",
                 zIndex: 9,
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
                 maxWidth: "1350px",
-                margin: "auto",
+                marginLeft: "auto",
+                marginRight: "auto",
                 border: "2px solid #ebebeb",
             }}
         >
@@ -107,7 +109,7 @@ const FooterServices: React.FC = () => {
                     {index < services.length - 1 && (
                         <Box
                             sx={{
-                                width: "1px",
+                                width: "3px",
                                 height: "100px",
                                 backgroundColor: "#ebebeb",
                                 margin: "0 20px",

@@ -9,6 +9,8 @@ import Blog from "./pages/Blog";
 import Pages from "./pages/Pages";
 import Contact from "./pages/Contact";
 import Wishlist from "./pages/WishlistPage";
+import FooterInfo from "./components/FooterInfo";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => {
     return (
@@ -23,6 +25,8 @@ const App: React.FC = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/wishlist" element={<Wishlist />} />
             </Routes>
+            <FooterInfo />
+            <Footer />
         </Router>
     );
 };

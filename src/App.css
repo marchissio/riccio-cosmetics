@@ -34,14 +34,21 @@ body {
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Open Sans";
+    src: url("/fonts/OpenSans-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 #root {
-    width: 100%; /* Set width to 100% */
+    width: 100%;
     margin: 0 auto;
-    padding: 0; /* Remove padding */
+    padding: 0;
 }
 
 .navbar .nav-link {
-    font-family: "Bebas Neue", sans-serif; /* Change font */
+    font-family: "Bebas Neue", sans-serif;
 }
 
 /* Navbar Styles */
