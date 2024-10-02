@@ -40,6 +40,13 @@ const WishlistTable: React.FC<WishlistTableProps> = ({ wishlist }) => {
                 img: item.img,
             })
         );
+
+        if (quantities[item.id] > 1) {
+            setQuantities((prev) => ({
+                ...prev,
+                [item.id]: 1,
+            }));
+        }
     };
 
     const handleRemoveFromWishlist = (item: Product) => {
@@ -274,7 +281,9 @@ const WishlistTable: React.FC<WishlistTableProps> = ({ wishlist }) => {
                                                 color: "#222222",
                                                 backgroundColor: "#d0a97e",
                                                 "&:hover": {
-                                                    backgroundColor: "#c5996b",
+                                                    backgroundColor: "#222222",
+                                                    borderColor: "#222222",
+                                                    color: "#d0a97e",
                                                 },
                                             }}
                                             onClick={() =>

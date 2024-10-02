@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Container, Typography, Link } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom"; // Import Link from react-router-dom
 
 const Footer: React.FC = () => {
     return (
@@ -21,33 +22,45 @@ const Footer: React.FC = () => {
                     }}
                 >
                     {/* Footer Info */}
-                    <Box sx={{ mb: { xs: 3, md: 0 }, flex: 2 }}>
-                        <Typography variant="h6" sx={{ color: "white", mb: 1 }}>
+                    <Box
+                        sx={{
+                            mb: { xs: 3, md: 0 },
+                            flex: 2,
+                        }}
+                    >
+                        <Typography
+                            variant="h6"
+                            sx={{
+                                color: "white",
+                                mb: 1,
+                                fontSize: "15px",
+                            }}
+                        >
                             We provide the best Beard oil all over the world. We
                             are the world’s best store for Beard Oil. You can
                             buy our
                         </Typography>
                         <Typography
                             variant="body2"
-                            sx={{ color: "white", mb: 2 }}
+                            sx={{ color: "white", fontSize: "15px" }}
                         >
                             228, East Zone, Momeno Tower
                         </Typography>
                         <Typography
                             variant="body2"
-                            sx={{ color: "white", mb: 2 }}
+                            sx={{ color: "white", mb: 2, fontSize: "15px" }}
                         >
                             South City, England
                         </Typography>
                         <Typography
                             variant="body2"
-                            sx={{ color: "white", mb: 2 }}
+                            sx={{ color: "white", mb: 2, fontSize: "15px" }}
                         >
                             +12546 687 987 / +15425 987 541
                         </Typography>
                         <Typography
                             variant="body2"
-                            sx={{ color: "white", mb: 3 }}
+                            sx={{ color: "white", mb: 3, fontSize: "15px" }}
                         >
                             demo@example.com
                         </Typography>
@@ -59,7 +72,7 @@ const Footer: React.FC = () => {
                             mb: { xs: 3, md: 0 },
                             flex: 1,
                             color: "white",
-                            marginLeft: { md: "120px" }, // Adjust margin left for larger screens
+                            marginLeft: { md: "120px" },
                         }}
                     >
                         <Typography
@@ -69,27 +82,32 @@ const Footer: React.FC = () => {
                             Quick Link
                         </Typography>
                         {[
-                            "About us",
-                            "Features",
-                            "Shop",
-                            "Blog",
-                            "Pages",
-                            "Contact",
-                        ].map((linkText) => (
-                            <Link
-                                href="#"
-                                color="#d8d8d8"
-                                underline="hover"
-                                sx={{
-                                    fontFamily: "Open Sans",
-                                    display: "block",
-                                    mb: 1, // Adds space between links
-                                    "&:hover": { color: "#d0a97e" },
+                            { text: "About us", path: "/about" },
+                            { text: "Features", path: "/pages" },
+                            { text: "Shop", path: "/shop" },
+                            { text: "Blog", path: "/blog" },
+                            { text: "Pages", path: "/pages" },
+                            { text: "Contact", path: "/contact" },
+                        ].map((link) => (
+                            <RouterLink
+                                to={link.path}
+                                style={{
+                                    color: "#d8d8d8",
+                                    textDecoration: "none",
                                 }}
-                                key={linkText}
+                                key={link.text}
                             >
-                                {linkText}
-                            </Link>
+                                <Typography
+                                    sx={{
+                                        fontFamily: "Open Sans",
+                                        mb: 1,
+                                        display: "block",
+                                        "&:hover": { color: "#d0a97e" },
+                                    }}
+                                >
+                                    {link.text}
+                                </Typography>
+                            </RouterLink>
                         ))}
                     </Box>
 
@@ -99,7 +117,7 @@ const Footer: React.FC = () => {
                             mb: { xs: 3, md: 0 },
                             flex: 1,
                             color: "white",
-                            marginLeft: { md: "80px" }, // Adjust margin left for larger screens
+                            marginLeft: { md: "80px" },
                         }}
                     >
                         <Typography
@@ -116,24 +134,22 @@ const Footer: React.FC = () => {
                             "Return Policy",
                             "Promotional Offers",
                         ].map((linkText) => (
-                            <Link
-                                href="#"
-                                color="#d8d8d8"
-                                underline="hover"
+                            <Typography
                                 sx={{
                                     fontFamily: "Open Sans",
+                                    mb: 1,
                                     display: "block",
-                                    mb: 1, // Adds space between links
+                                    color: "#d8d8d8",
                                     "&:hover": { color: "#d0a97e" },
                                 }}
                                 key={linkText}
                             >
                                 {linkText}
-                            </Link>
+                            </Typography>
                         ))}
                     </Box>
 
-                    {/* Follow us */}
+                    {/* Follow Us */}
                     <Box
                         sx={{
                             flex: 1,
@@ -155,20 +171,18 @@ const Footer: React.FC = () => {
                             "Google Plus",
                             "YouTube",
                         ].map((linkText) => (
-                            <Link
-                                href="#"
-                                color="#d8d8d8"
-                                underline="hover"
+                            <Typography
                                 sx={{
                                     fontFamily: "Open Sans",
+                                    mb: 1,
                                     display: "block",
-                                    mb: 1, // Adds space between links
+                                    color: "#d8d8d8",
                                     "&:hover": { color: "#d0a97e" },
                                 }}
                                 key={linkText}
                             >
                                 {linkText}
-                            </Link>
+                            </Typography>
                         ))}
                     </Box>
                 </Box>
