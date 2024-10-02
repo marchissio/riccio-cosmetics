@@ -8,7 +8,8 @@ const ContactSection: React.FC = () => {
                 display: "flex",
                 justifyContent: "center",
                 padding: "20px",
-                color: "white",
+                color: "white", 
+                marginTop: "-50px",
             }}
         >
             {/* Left Section - Black Box */}
@@ -19,7 +20,8 @@ const ContactSection: React.FC = () => {
                     paddingTop: "100px",
                     bgcolor: "#222222",
                     borderRadius: 0,
-                    marginRight: "20px",
+                    marginRight: "40px",
+                   
                     boxShadow: 3,
                     fontFamily: "Oswald",
                 }}
@@ -69,9 +71,18 @@ const ContactSection: React.FC = () => {
                     padding: "20px",
                     bgcolor: "white",
                     color: "black",
+                    marginTop: "-28px",
                 }}
             >
-                <Typography variant="h6" sx={{ mb: 2, fontFamily: "Oswald" }}>
+                <Typography
+                    variant="h6"
+                    sx={{
+                        mb: 2,
+                        fontFamily: "Oswald",
+                        fontSize: "24px",
+                        fontWeight: 600,
+                    }}
+                >
                     Get in Touch
                 </Typography>
                 <Typography sx={{ mb: 2 }}>
@@ -142,6 +153,7 @@ const ContactSection: React.FC = () => {
                         sx={{
                             flex: 1,
                             borderRadius: "50px",
+
                             "& .MuiOutlinedInput-root": {
                                 borderRadius: "50px",
                                 paddingLeft: "25px",
@@ -157,7 +169,6 @@ const ContactSection: React.FC = () => {
                 <TextField
                     label="Write message here..."
                     variant="outlined"
-                    multiline
                     rows={4}
                     sx={{
                         mb: 2,
@@ -169,7 +180,7 @@ const ContactSection: React.FC = () => {
                         },
                         "& .MuiInputBase-input": {
                             lineHeight: "24px",
-                            height: "190px",
+                            height: "120px",
                             resize: "vertical",
                         },
                         "& fieldset": {

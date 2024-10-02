@@ -5,7 +5,7 @@ import ContactSection from "../components/ContactSection";
 const Contact: React.FC = () => {
     return (
         <>
-            <PageHeader title="Contact" subtitle="Home-contect" />
+            <PageHeader title="Contact us" subtitle="Home - Contact" />
             <ContactSection />
         </>
     );
