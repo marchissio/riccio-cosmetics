@@ -7,7 +7,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/favoriteSlice";
 import ProductActions from "./ProductActions";
-import { Product } from "./interface/types"; 
+import { Product } from "./interface/types";
 
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
@@ -138,7 +138,7 @@ const NewArrivals = () => {
                                     flexShrink: 0,
                                     padding: "10px",
                                     position: "relative",
-                                    marginLeft:'10px'
+                                    marginLeft: "10px",
                                 }}
                             >
                                 <Box

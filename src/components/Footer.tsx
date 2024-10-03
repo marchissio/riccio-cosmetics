@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom"; // Import Link from react-router-dom
+import { Link as RouterLink } from "react-router-dom";
 
 const Footer: React.FC = () => {
     return (
@@ -85,7 +85,7 @@ const Footer: React.FC = () => {
                             { text: "About us", path: "/about" },
                             { text: "Features", path: "/pages" },
                             { text: "Shop", path: "/shop" },
-                            { text: "Blog", path: "/blog" },
+
                             { text: "Pages", path: "/pages" },
                             { text: "Contact", path: "/contact" },
                         ].map((link) => (

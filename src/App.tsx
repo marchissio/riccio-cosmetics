@@ -5,12 +5,12 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
-import Blog from "./pages/Blog";
 import Pages from "./pages/Pages";
 import Contact from "./pages/Contact";
 import Wishlist from "./pages/WishlistPage";
 import FooterInfo from "./components/FooterInfo";
 import Footer from "./components/Footer";
+import CartPage from "./pages/CartPage";
 
 const App: React.FC = () => {
     return (
@@ -20,10 +20,10 @@ const App: React.FC = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/shop" element={<Shop />} />
-                <Route path="/blog" element={<Blog />} />
                 <Route path="/pages" element={<Pages />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/cart" element={<CartPage />} />
             </Routes>
             <FooterInfo />
             <Footer />

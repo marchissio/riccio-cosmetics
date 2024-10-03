@@ -1,6 +1,5 @@
-// Navbar.tsx
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
@@ -19,8 +18,25 @@ import { loadCart } from "../store/cartSlice";
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
+    const location = useLocation(); // Track current page
     const dispatch = useDispatch();
     const [isCartModalOpen, setCartModalOpen] = useState(false);
+
+    // Effect to disable body scroll when cart modal is open
+    useEffect(() => {
+        if (isCartModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+    }, [isCartModalOpen]);
+
+    // Close modal when navigating to Cart page
+    useEffect(() => {
+        if (location.pathname === "/cart") {
+            setCartModalOpen(false); // Close modal when on the cart page
+        }
+    }, [location.pathname]);
 
     useEffect(() => {
         dispatch(loadFavorites());
@@ -68,6 +84,7 @@ const Navbar: React.FC = () => {
                         src={logo}
                         alt="Logo"
                         style={{ height: "45px", cursor: "pointer" }}
+                        onClick={() => navigate("/")}
                     />
                 </Box>
 
@@ -95,6 +112,7 @@ const Navbar: React.FC = () => {
                                 fontFamily: '"Oswald", sans-serif',
                                 padding: "25px 0",
                             }}
+                            onClick={() => setCartModalOpen(false)} // Close modal when navigating
                         >
                             {key}
                         </Button>

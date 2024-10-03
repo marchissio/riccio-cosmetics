@@ -2,10 +2,10 @@ import React from "react";
 import { Box, Modal, Typography, IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
-import { removeFromCart } from "../store/cartSlice"; // Import the remove action
-import CloseIcon from "@mui/icons-material/Close"; // Close icon
-import DeleteIcon from "@mui/icons-material/Delete"; // Trash can icon
-import { Link } from "react-router-dom"; // For "View Cart" button navigation
+import { removeFromCart } from "../store/cartSlice"; 
+import CloseIcon from "@mui/icons-material/Close"; 
+import DeleteIcon from "@mui/icons-material/Delete"; 
+import { Link } from "react-router-dom"; 
 
 interface CartModalProps {
     open: boolean;
