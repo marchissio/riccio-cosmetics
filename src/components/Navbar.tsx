@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
                                 fontFamily: '"Oswald", sans-serif',
                                 padding: "25px 0",
                             }}
-                            onClick={() => setCartModalOpen(false)} // Close modal when navigating
+                            onClick={() => setCartModalOpen(false)}
                         >
                             {key}
                         </Button>

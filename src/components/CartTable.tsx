@@ -35,7 +35,6 @@ const CartTable: React.FC<CartTableProps> = ({ cart }) => {
 
     return (
         <div>
-            {/* Use the ProductTable component here */}
             <ProductTable
                 products={cart}
                 quantities={quantities}

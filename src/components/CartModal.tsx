@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Modal, Typography, IconButton } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
-import { removeFromCart } from "../store/cartSlice"; 
-import CloseIcon from "@mui/icons-material/Close"; 
-import DeleteIcon from "@mui/icons-material/Delete"; 
-import { Link } from "react-router-dom"; 
+import { removeFromCart } from "../store/cartSlice";
+import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
 
 interface CartModalProps {
     open: boolean;
@@ -24,6 +24,21 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
     const handleDelete = (id: number) => {
         dispatch(removeFromCart(id));
     };
+
+    useEffect(() => {
+        if (open) {
+            // Add a class to lock body scroll
+            document.body.classList.add("body-scroll-lock");
+        } else {
+            // Remove the scroll lock class when modal closes
+            document.body.classList.remove("body-scroll-lock");
+        }
+
+        // Cleanup function to remove the class when component unmounts
+        return () => {
+            document.body.classList.remove("body-scroll-lock");
+        };
+    }, [open]);  
 
     return (
         <Modal open={open} onClose={onClose}>
@@ -60,7 +75,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
                     </IconButton>
                 </Box>
 
-                {/* Body  */}
+                {/* Body */}
                 <Box
                     sx={{
                         maxHeight: "220px",

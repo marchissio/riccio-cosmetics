@@ -92,3 +92,11 @@ body {
     display: flex; /* Horizontal layout for icons */
     gap: 1rem; /* Space between icons */
 }
+
+
+/* Add this to your App.css */
+.body-scroll-lock {
+    overflow: hidden; /* Disable scrolling */
+    padding-right: 15px; /* Add space to prevent layout shift */
+}
+ 

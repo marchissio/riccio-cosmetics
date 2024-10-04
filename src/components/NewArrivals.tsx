@@ -55,9 +55,10 @@ const NewArrivals = () => {
         <Box
             sx={{
                 padding: "50px",
+                paddingLeft: "100px",
+                paddingRight: "100px",
                 backgroundColor: "#fff",
-                textAlign: "center",
-                position: "relative",
+                textAlign: "left",
             }}
         >
             <Typography
@@ -66,6 +67,7 @@ const NewArrivals = () => {
                     fontFamily: '"Oswald", sans-serif',
                     fontWeight: "bold",
                     marginBottom: "20px",
+                    marginLeft: "15%",
                 }}
             >
                 New Arrivals
@@ -77,6 +79,7 @@ const NewArrivals = () => {
                     fontFamily: '"Open-sans", sans-serif',
                     fontSize: "15px",
                     marginBottom: "40px",
+                    marginLeft: "15%",
                 }}
             >
                 Some of our customers say that they trust us and buy our product
@@ -100,7 +103,7 @@ const NewArrivals = () => {
                     disabled={currentIndex === 0}
                     sx={{
                         position: "absolute",
-                        left: "10px",
+                        left: "100px",
                         zIndex: 1,
                         backgroundColor: "#fff",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -113,8 +116,9 @@ const NewArrivals = () => {
                 <Box
                     sx={{
                         display: "flex",
-                        width: "80%",
-                        overflowX: "hidden",
+                        width: "75%",
+                        overflow: "hidden",
+                        marginLeft: "4%",
                     }}
                 >
                     <Box
@@ -122,28 +126,26 @@ const NewArrivals = () => {
                             display: "flex",
                             transition: "transform 0.3s ease-in-out",
                             transform: `translateX(-${
-                                currentIndex * (100 / ITEMS_PER_PAGE)
-                            }%)`,
-                            width: `calc(${ITEMS_PER_PAGE * 100}% + ${
-                                (products.length - ITEMS_PER_PAGE) *
-                                (100 / ITEMS_PER_PAGE)
-                            }%)`,
+                                (currentIndex / ITEMS_PER_PAGE) * 100
+                            }%)`, // Adjust calculation for exact cube sizing
+                            width: `${
+                                (products.length / ITEMS_PER_PAGE) * 100
+                            }%`, // Ensure the total width fits all items
                         }}
                     >
                         {products.map((product) => (
                             <Box
                                 key={product.id}
                                 sx={{
-                                    flexBasis: "calc(100% / 4 - 20px)",
+                                    flexBasis: "calc(100% / 4)", 
                                     flexShrink: 0,
-                                    padding: "10px",
                                     position: "relative",
-                                    marginLeft: "10px",
+                                   
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        width: "82%",
+                                        width: "87%", 
                                         height: "350px",
                                         backgroundColor: "#f4f4f4",
                                         display: "flex",
@@ -159,7 +161,7 @@ const NewArrivals = () => {
                                 >
                                     <Box
                                         sx={{
-                                            width: "75%",
+                                            width: "77%",
                                             height: "90%",
                                             backgroundColor: "#fff",
                                             boxShadow:
@@ -246,7 +248,7 @@ const NewArrivals = () => {
                     disabled={currentIndex >= products.length - ITEMS_PER_PAGE}
                     sx={{
                         position: "absolute",
-                        right: "10px",
+                        right: "100px",
                         zIndex: 1,
                         backgroundColor: "#fff",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

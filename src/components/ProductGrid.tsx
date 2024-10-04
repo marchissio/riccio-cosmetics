@@ -39,7 +39,8 @@ const ProductGrid = () => {
     return (
         <Box
             sx={{
-                padding: "50px",
+                padding: "250px",
+                paddingBottom: 0,
                 backgroundColor: "#fff",
                 textAlign: "center",
                 marginLeft: "90px",

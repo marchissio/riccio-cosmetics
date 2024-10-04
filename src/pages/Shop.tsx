@@ -1,7 +1,12 @@
 import React from "react";
+import PageHeader from "../components/PageHeader";
 
 const Shop: React.FC = () => {
-    return <div>Shop Page</div>;
+    return (
+        <>
+            <PageHeader title="Shop" subtitle="Home - Shop" />
+        </>
+    );
 };
 
 export default Shop;
