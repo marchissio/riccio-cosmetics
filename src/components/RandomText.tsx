@@ -6,6 +6,7 @@ import haircut from "../assets/haircut.jpg";
 import haircut1 from "../assets/haircut1.jpg";
 import haircut2 from "../assets/haircut2.jpg";
 import haircut3 from "../assets/haircut3.jpg";
+import random from "../assets/about-shape-1.png";
 import PageHeader from "./PageHeader";
 
 const RandomText = () => {

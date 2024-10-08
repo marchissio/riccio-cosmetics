@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import CartTable from "../components/CartTable";
 import { Box } from "@mui/material";
-import { Product } from "../components/interface/types";
 import PageHeader from "../components/PageHeader";
 
 const CartPage: React.FC = () => {
+    // Access cart items from the Redux store
     const cartItems = useSelector((state: RootState) => state.cart.items);
 
     return (
@@ -15,7 +15,8 @@ const CartPage: React.FC = () => {
 
             <Box sx={{ marginTop: "100px" }}>
                 {cartItems.length > 0 ? (
-                    <CartTable cart={cartItems as Product[]} />
+                    // Render CartTable without the cart prop
+                    <CartTable />
                 ) : (
                     <h2
                         style={{

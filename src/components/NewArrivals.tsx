@@ -1,11 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Snackbar from "@mui/material/Snackbar"; // Import Snackbar for notifications
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/favoriteSlice";
+import { addToCart } from "../store/cartSlice";
 import ProductActions from "./ProductActions";
 import { Product } from "./interface/types";
 
@@ -32,8 +34,9 @@ const products: Product[] = [
 
 const ITEMS_PER_PAGE = 4;
 
-const NewArrivals = () => {
+const NewArrivals: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [notification, setNotification] = useState<string | null>(null); // State for notification
     const favorites = useSelector((state: RootState) => state.favorites.items);
     const dispatch = useDispatch();
 
@@ -49,6 +52,22 @@ const NewArrivals = () => {
 
     const handleToggleFavorite = (product: Product) => {
         dispatch(toggleFavorite(product));
+    };
+
+    const handleAddToCart = (product: Product) => {
+        dispatch(
+            addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price || 0,
+                quantity: 1,
+                img: product.img,
+            })
+        );
+        setNotification(`Added ${product.name} to cart!`); // Set notification message
+        setTimeout(() => {
+            setNotification(null); // Hide notification after 3 seconds
+        }, 3000);
     };
 
     return (
@@ -127,25 +146,24 @@ const NewArrivals = () => {
                             transition: "transform 0.3s ease-in-out",
                             transform: `translateX(-${
                                 (currentIndex / ITEMS_PER_PAGE) * 100
-                            }%)`, // Adjust calculation for exact cube sizing
+                            }%)`,
                             width: `${
                                 (products.length / ITEMS_PER_PAGE) * 100
-                            }%`, // Ensure the total width fits all items
+                            }%`,
                         }}
                     >
                         {products.map((product) => (
                             <Box
                                 key={product.id}
                                 sx={{
-                                    flexBasis: "calc(100% / 4)", 
+                                    flexBasis: "calc(100% / 4)",
                                     flexShrink: 0,
                                     position: "relative",
-                                   
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        width: "87%", 
+                                        width: "87%",
                                         height: "350px",
                                         backgroundColor: "#f4f4f4",
                                         display: "flex",
@@ -234,6 +252,7 @@ const NewArrivals = () => {
                                                 onToggleFavorite={
                                                     handleToggleFavorite
                                                 }
+                                                onAddToCart={handleAddToCart}
                                             />
                                         </Box>
                                     </Box>
@@ -258,6 +277,14 @@ const NewArrivals = () => {
                     <ArrowForwardIosIcon />
                 </IconButton>
             </Box>
+
+            <Snackbar
+                open={Boolean(notification)}
+                message={notification}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                onClose={() => setNotification(null)}
+                autoHideDuration={3000}
+            />
         </Box>
     );
 };

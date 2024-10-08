@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/favoriteSlice";
 import { addToCart } from "../store/cartSlice";
-import { Product } from "../components/interface/types";
+import { Product } from "../components/interface/types"; // Assuming Product does not have 'quantity'
 import ProductTable from "./ProductTable"; // Import the ProductTable component
 
 interface WishlistTableProps {
@@ -60,17 +60,21 @@ const WishlistTable: React.FC<WishlistTableProps> = ({ wishlist }) => {
         }));
     };
 
+    const cartProducts = wishlist.map((item) => ({
+        ...item,
+        quantity: quantities[item.id],
+    }));
+
     return (
         <div>
-            {/* Use the ProductTable component here */}
             <ProductTable
-                products={wishlist}
+                products={cartProducts}
                 quantities={quantities}
                 onAddToCart={handleAddToCart}
                 onRemove={handleRemoveFromWishlist}
                 onIncrement={handleIncrement}
                 onDecrement={handleDecrement}
-                isWishlist={false} // Pass true for wishlist
+                isWishlist={false}
             />
         </div>
     );

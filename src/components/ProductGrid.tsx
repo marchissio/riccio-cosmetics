@@ -1,9 +1,11 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Snackbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import ProductActions from "./ProductActions";
 import { RootState } from "../store/store";
 import { toggleFavorite } from "../store/favoriteSlice";
+import { addToCart } from "../store/cartSlice";
 import { Product } from "./interface/types.ts";
+import { useState } from "react";
 
 import product1 from "../assets/product1.jpg";
 import product2 from "../assets/product2.jpg";
@@ -28,6 +30,7 @@ const products: Product[] = [
 const ProductGrid = () => {
     const dispatch = useDispatch();
     const favorites = useSelector((state: RootState) => state.favorites.items);
+    const [notification, setNotification] = useState<string | null>(null);
 
     const isProductFavorited = (id: number) => {
         return favorites.some((item) => item.id === id);
@@ -36,6 +39,23 @@ const ProductGrid = () => {
     const handleToggleFavorite = (product: any) => {
         dispatch(toggleFavorite(product));
     };
+
+    const handleAddToCart = (product: Product) => {
+        dispatch(
+            addToCart({
+                id: product.id,
+                name: product.name,
+                price: product.price || 0,
+                quantity: 1,
+                img: product.img,
+            })
+        );
+        setNotification(`Added ${product.name} to cart!`);
+        setTimeout(() => {
+            setNotification(null);
+        }, 3000);
+    };
+
     return (
         <Box
             sx={{
@@ -178,6 +198,7 @@ const ProductGrid = () => {
                                             product.id
                                         )}
                                         onToggleFavorite={handleToggleFavorite}
+                                        onAddToCart={handleAddToCart}
                                     />
                                 </Box>
                             </Box>
@@ -185,6 +206,15 @@ const ProductGrid = () => {
                     </Box>
                 ))}
             </Box>
+
+            {/* Snackbar for notifications */}
+            <Snackbar
+                open={Boolean(notification)}
+                message={notification}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                onClose={() => setNotification(null)}
+                autoHideDuration={3000}
+            />
         </Box>
     );
 };

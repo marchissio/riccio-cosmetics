@@ -3,9 +3,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 export interface CartProduct {
     id: number;
     name: string;
-    price?: number; 
+    price?: number;
     quantity: number;
-    img: string; 
+    img: string;
 }
 
 interface CartState {
@@ -26,11 +26,9 @@ const cartSlice = createSlice({
             );
 
             if (existingProductIndex >= 0) {
-                // Update quantity if the product is already in the cart
                 state.items[existingProductIndex].quantity +=
                     action.payload.quantity;
             } else {
-                // Add new product to the cart
                 state.items.push(action.payload);
             }
 
@@ -71,4 +69,5 @@ const cartSlice = createSlice({
 
 export const { addToCart, removeFromCart, updateQuantity, loadCart } =
     cartSlice.actions;
+
 export default cartSlice.reducer;

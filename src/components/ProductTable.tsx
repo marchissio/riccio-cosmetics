@@ -14,16 +14,16 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Product } from "../components/interface/types";
+import { CartProduct } from "../store/cartSlice"; 
 
 interface ProductTableProps {
-    products: Product[];
+    products: CartProduct[];
     quantities: { [id: number]: number };
-    onAddToCart?: (item: Product) => void;
-    onRemove: (item: Product) => void;
+    onAddToCart?: (item: CartProduct) => void;
+    onRemove: (item: CartProduct) => void;
     onIncrement: (id: number) => void;
     onDecrement: (id: number) => void;
-    isWishlist?: boolean; // New prop to check if it's a wishlist
+    isWishlist?: boolean; 
 }
 
 const ProductTable: React.FC<ProductTableProps> = ({
@@ -33,7 +33,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
     onRemove,
     onIncrement,
     onDecrement,
-    isWishlist = false, // Default to false
+    isWishlist = true, 
 }) => {
     return (
         <TableContainer
@@ -50,7 +50,6 @@ const ProductTable: React.FC<ProductTableProps> = ({
                 aria-label="product table"
                 sx={{
                     borderCollapse: "collapse",
-
                     fontFamily: "Open Sans, sans-serif",
                 }}
             >
@@ -76,7 +75,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
                         >
                             Quantity
                         </TableCell>
-                        {!isWishlist && ( // Conditionally render this cell
+                        {!isWishlist && (
                             <TableCell
                                 sx={{
                                     backgroundColor: "#212529",
@@ -101,7 +100,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
                             </TableCell>
                         </TableRow>
                     ) : (
-                        products.map((item: Product) => (
+                        products.map((item) => (
                             <TableRow key={item.id}>
                                 <TableCell>
                                     <img
@@ -185,7 +184,7 @@ const ProductTable: React.FC<ProductTableProps> = ({
                                         </IconButton>
                                     </Box>
                                 </TableCell>
-                                {!isWishlist && ( // Conditionally render the button
+                                {!isWishlist && (
                                     <TableCell>
                                         <Button
                                             variant="contained"

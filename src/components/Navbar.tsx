@@ -18,11 +18,10 @@ import { loadCart } from "../store/cartSlice";
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
-    const location = useLocation(); // Track current page
+    const location = useLocation();
     const dispatch = useDispatch();
     const [isCartModalOpen, setCartModalOpen] = useState(false);
 
-    // Effect to disable body scroll when cart modal is open
     useEffect(() => {
         if (isCartModalOpen) {
             document.body.style.overflow = "hidden";
@@ -31,10 +30,9 @@ const Navbar: React.FC = () => {
         }
     }, [isCartModalOpen]);
 
-    // Close modal when navigating to Cart page
     useEffect(() => {
         if (location.pathname === "/cart") {
-            setCartModalOpen(false); // Close modal when on the cart page
+            setCartModalOpen(false);
         }
     }, [location.pathname]);
 
@@ -49,8 +47,10 @@ const Navbar: React.FC = () => {
     const favoriteCount = favoriteProducts.length;
 
     const cartItems = useSelector((state: RootState) => state.cart.items);
-    const cartItemCount = cartItems.reduce(
-        (count, item) => count + item.quantity,
+
+    // Calculate total quantity instead of price
+    const totalQuantity = cartItems.reduce(
+        (total, item) => total + item.quantity,
         0
     );
 
@@ -137,7 +137,9 @@ const Navbar: React.FC = () => {
                         sx={{ color: "black" }}
                         onClick={handleCartClick}
                     >
-                        <Badge badgeContent={cartItemCount} color="error">
+                        <Badge badgeContent={totalQuantity} color="error">
+                            {" "}
+                            {/* Update to show quantity */}
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
