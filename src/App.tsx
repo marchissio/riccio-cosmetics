@@ -11,6 +11,7 @@ import Wishlist from "./pages/WishlistPage";
 import FooterInfo from "./components/FooterInfo";
 import Footer from "./components/Footer";
 import CartPage from "./pages/CartPage";
+import Checkout from "./pages/Checkout";
 
 const App: React.FC = () => {
     return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route path="/checkout" element={<Checkout />} />
             </Routes>
             <FooterInfo />
             <Footer />

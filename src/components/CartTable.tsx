@@ -5,6 +5,7 @@ import { CartProduct } from "../store/cartSlice";
 import ProductTable from "./ProductTable";
 import { Box, Typography, Divider, Button } from "@mui/material";
 import { RootState } from "../store/store";
+import { useNavigate } from "react-router-dom";
 
 const CartTable: React.FC = () => {
     const dispatch = useDispatch();
@@ -40,6 +41,11 @@ const CartTable: React.FC = () => {
                 handleRemoveFromCart(product);
             }
         }
+    };
+
+    const navigate = useNavigate();
+    const handleCheckout = () => {
+        navigate("/checkout");
     };
 
     const quantities = cart.reduce((acc, item) => {
@@ -161,6 +167,7 @@ const CartTable: React.FC = () => {
                             color: "#d0a97e",
                         },
                     }}
+                    onClick={handleCheckout}
                 >
                     Checkout
                 </Button>

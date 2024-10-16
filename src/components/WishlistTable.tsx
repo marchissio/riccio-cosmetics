@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/favoriteSlice";
 import { addToCart } from "../store/cartSlice";
-import { Product } from "../components/interface/types"; // Assuming Product does not have 'quantity'
-import ProductTable from "./ProductTable"; // Import the ProductTable component
+import { Product } from "../components/interface/types";
+import ProductTable from "./ProductTable";
+import { Snackbar } from "@mui/material";
 
 interface WishlistTableProps {
     wishlist: Product[];
@@ -16,6 +17,8 @@ const WishlistTable: React.FC<WishlistTableProps> = ({ wishlist }) => {
         wishlist.reduce((acc, item) => ({ ...acc, [item.id]: 1 }), {})
     );
 
+    const [notification, setNotification] = useState<string | null>(null);
+
     const handleAddToCart = (item: Product) => {
         dispatch(
             addToCart({
@@ -26,6 +29,7 @@ const WishlistTable: React.FC<WishlistTableProps> = ({ wishlist }) => {
                 img: item.img,
             })
         );
+        setNotification(`Added ${item.name} to cart!`);
 
         if (quantities[item.id] > 1) {
             setQuantities((prev) => ({
@@ -75,6 +79,15 @@ const WishlistTable: React.FC<WishlistTableProps> = ({ wishlist }) => {
                 onIncrement={handleIncrement}
                 onDecrement={handleDecrement}
                 isWishlist={false}
+            />
+
+            {/* Snackbar for notifications */}
+            <Snackbar
+                open={Boolean(notification)}
+                message={notification}
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+                onClose={() => setNotification(null)}
+                autoHideDuration={3000}
             />
         </div>
     );

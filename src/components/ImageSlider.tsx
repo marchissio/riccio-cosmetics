@@ -69,8 +69,9 @@ const ImageSlider: React.FC = () => {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        opacity: index === currentIndex ? 1 : 0,
+                        opacity: index === currentIndex ? 3 : 0,
                         transition: "opacity 1s ease-in-out",
+                        zIndex: index === currentIndex ? 3 : 0, // Set z-index for images
                     }}
                 />
             ))}
@@ -86,6 +87,7 @@ const ImageSlider: React.FC = () => {
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     width: "60px",
                     height: "60px",
+                    zIndex: 2, // Ensure buttons are above images
                     "&:hover": {
                         backgroundColor: "rgba(0, 0, 0, 0.7)",
                     },
@@ -108,6 +110,7 @@ const ImageSlider: React.FC = () => {
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     width: "60px",
                     height: "60px",
+                    zIndex: 2, // Ensure buttons are above images
                     "&:hover": {
                         backgroundColor: "rgba(0, 0, 0, 0.7)",
                     },
