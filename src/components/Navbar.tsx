@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,12 +15,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
 import { loadFavorites } from "../store/favoriteSlice";
 import { loadCart } from "../store/cartSlice";
+import Menu from "@mui/material/Menu";
+import Pages from "../pages/Pages";
 
 const Navbar: React.FC = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch();
     const [isCartModalOpen, setCartModalOpen] = useState(false);
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+    const handlePagesClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handlePagesClose = () => {
+        setAnchorEl(null);
+    };
 
     useEffect(() => {
         if (isCartModalOpen) {
@@ -47,8 +58,6 @@ const Navbar: React.FC = () => {
     const favoriteCount = favoriteProducts.length;
 
     const cartItems = useSelector((state: RootState) => state.cart.items);
-
-    // Calculate total quantity instead of price
     const totalQuantity = cartItems.reduce(
         (total, item) => total + item.quantity,
         0
@@ -91,18 +100,43 @@ const Navbar: React.FC = () => {
                 <Box
                     sx={{
                         display: "flex",
-                        gap: "2rem",
+                        gap: "3rem",
                         flexGrow: 1,
                         justifyContent: "center",
                         fontFamily: '"Oswald", sans-serif',
                     }}
                 >
-                    {Object.keys(Routes).map((key) => (
+                    {Object.keys(Routes).map((key) => {
+                        if (key === "PAGES") return null;
+
+                        return (
+                            <Button
+                                key={key}
+                                color="inherit"
+                                component={Link}
+                                to={Routes[key as keyof typeof Routes]}
+                                sx={{
+                                    fontWeight: "600",
+                                    fontSize: "16px",
+                                    lineHeight: "30px",
+                                    letterSpacing: "0.50px",
+                                    color: "black",
+                                    fontFamily: '"Oswald", sans-serif',
+                                    padding: "25px 0",
+                                }}
+                                onClick={() => {
+                                    setCartModalOpen(false);
+                                    handlePagesClose(); 
+                                }}
+                            >
+                                {key}
+                            </Button>
+                        );
+                    })}
+
+                    <Box sx={{ position: "relative" }}>
                         <Button
-                            key={key}
-                            color="inherit"
-                            component={Link}
-                            to={Routes[key as keyof typeof Routes]}
+                            onClick={handlePagesClick}
                             sx={{
                                 fontWeight: "600",
                                 fontSize: "16px",
@@ -112,11 +146,26 @@ const Navbar: React.FC = () => {
                                 fontFamily: '"Oswald", sans-serif',
                                 padding: "25px 0",
                             }}
-                            onClick={() => setCartModalOpen(false)}
                         >
-                            {key}
+                            Pages
                         </Button>
-                    ))}
+                        <Menu
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={handlePagesClose}
+                            anchorOrigin={{
+                                vertical: "bottom",
+                                horizontal: "center",
+                            }}
+                            transformOrigin={{
+                                vertical: "top",
+                                horizontal: "center",
+                            }}
+                        >
+                            <Pages onClose={handlePagesClose} />{" "}
+                            {/* Pass close handler */}
+                        </Menu>
+                    </Box>
                 </Box>
 
                 <Box sx={{ display: "flex", gap: "1rem" }}>
@@ -138,14 +187,11 @@ const Navbar: React.FC = () => {
                         onClick={handleCartClick}
                     >
                         <Badge badgeContent={totalQuantity} color="error">
-                            {" "}
-                            {/* Update to show quantity */}
                             <ShoppingCartIcon />
                         </Badge>
                     </IconButton>
                 </Box>
             </Toolbar>
-            {/* Cart Modal */}
             <CartModal open={isCartModalOpen} onClose={handleCloseCartModal} />
         </AppBar>
     );

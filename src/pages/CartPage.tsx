@@ -6,7 +6,6 @@ import { Box } from "@mui/material";
 import PageHeader from "../components/PageHeader";
 
 const CartPage: React.FC = () => {
-    // Access cart items from the Redux store
     const cartItems = useSelector((state: RootState) => state.cart.items);
 
     return (
@@ -15,7 +14,6 @@ const CartPage: React.FC = () => {
 
             <Box sx={{ marginTop: "100px" }}>
                 {cartItems.length > 0 ? (
-                    // Render CartTable without the cart prop
                     <CartTable />
                 ) : (
                     <h2

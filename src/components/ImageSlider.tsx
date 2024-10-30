@@ -49,13 +49,13 @@ const ImageSlider: React.FC = () => {
         <Box
             sx={{
                 width: "100%",
-                height: "calc(100vh - 80px)", // Full screen minus the height of the Navbar
+                height: "calc(100vh - 80px)",
                 overflow: "hidden",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 position: "relative",
-                marginTop: "80px", // Adjust to match your Navbar height
+                marginTop: "80px",
             }}
         >
             {images.map((image, index) => (
@@ -71,7 +71,7 @@ const ImageSlider: React.FC = () => {
                         objectFit: "cover",
                         opacity: index === currentIndex ? 3 : 0,
                         transition: "opacity 1s ease-in-out",
-                        zIndex: index === currentIndex ? 3 : 0, // Set z-index for images
+                        zIndex: index === currentIndex ? 3 : 0,
                     }}
                 />
             ))}
@@ -87,7 +87,7 @@ const ImageSlider: React.FC = () => {
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     width: "60px",
                     height: "60px",
-                    zIndex: 2, // Ensure buttons are above images
+                    zIndex: 10,
                     "&:hover": {
                         backgroundColor: "rgba(0, 0, 0, 0.7)",
                     },
@@ -110,7 +110,7 @@ const ImageSlider: React.FC = () => {
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     width: "60px",
                     height: "60px",
-                    zIndex: 2, // Ensure buttons are above images
+                    zIndex: 10,
                     "&:hover": {
                         backgroundColor: "rgba(0, 0, 0, 0.7)",
                     },

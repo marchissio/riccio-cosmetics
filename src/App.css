@@ -2,14 +2,24 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Bebas Neue", sans-serif; /* Use the new font */
+    font-family: "Bebas Neue", sans-serif;
+}
+
+/* html {
+    overflow: -moz-scrollbars-vertical !important;
+    overflow-y: scroll !important;
+} */
+/* In your global CSS file */
+.css-1xomo8h-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    background-color: transparent !important;
+    box-shadow: none !important;
 }
 
 .navbar .nav-link,
 .nav-link,
 .toolbar,
 .icon-button {
-    font-family: "Bebas Neue", sans-serif; /* Apply font to specific elements if needed */
+    font-family: "Bebas Neue", sans-serif;
 }
 
 .main-content {
@@ -93,10 +103,4 @@ body {
     gap: 1rem; /* Space between icons */
 }
 
-
 /* Add this to your App.css */
-.body-scroll-lock {
-    overflow: hidden; /* Disable scrolling */
-    padding-right: 15px; /* Add space to prevent layout shift */
-}
- 

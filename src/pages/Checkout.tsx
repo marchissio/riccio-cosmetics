@@ -5,19 +5,16 @@ import { RootState } from "../store/store";
 import PageHeader from "../components/PageHeader";
 
 const Checkout: React.FC = () => {
-    // Fetching cart from the store
     const cart = useSelector((state: RootState) => state.cart.items);
 
-    // Calculating subtotal and grand total
     const subtotal = cart
         .reduce((total, item) => total + (item.price || 0) * item.quantity, 0)
         .toFixed(2);
     const shippingCost = 0.0;
     const grandTotal = (parseFloat(subtotal) + shippingCost).toFixed(2);
 
-    // Style for the rounded input fields
     const inputStyle = {
-        borderRadius: "30px", // Rounded sides
+        borderRadius: "30px",
         lineHeight: "23px",
         fontSize: "14px",
         color: "#222222",
@@ -32,10 +29,12 @@ const Checkout: React.FC = () => {
             <Box
                 sx={{
                     display: "flex",
-                    justifyContent: "space-between",
+                    justifyContent: "center",
+                    alignItems: "center",
                     width: "100%",
                     maxWidth: "1200px",
-                    marginLeft: "350px",
+                    margin: "0 auto",
+                    padding: "0px",
                 }}
             >
                 {/* Left Section: Billing Address Form */}
@@ -44,6 +43,7 @@ const Checkout: React.FC = () => {
                         flex: 1,
                         marginRight: "70px",
                         backgroundColor: "#fff",
+                        padding: "30px", // Optional padding for better spacing
                     }}
                 >
                     <Typography
@@ -189,6 +189,27 @@ const Checkout: React.FC = () => {
                             variant="outlined"
                             multiline
                             rows={3}
+                            slotProps={{
+                                input: {
+                                    sx: inputStyle,
+                                },
+                            }}
+                        />
+                    </Box>
+                    <Box sx={{ marginTop: "30px" }}>
+                        <Typography
+                            variant="body1"
+                            sx={{
+                                fontWeight: 700,
+                                marginBottom: "20px",
+                            }}
+                        >
+                            Zip Code *
+                        </Typography>
+                        <TextField
+                            label="Zip Code"
+                            fullWidth
+                            variant="outlined"
                             slotProps={{
                                 input: {
                                     sx: inputStyle,

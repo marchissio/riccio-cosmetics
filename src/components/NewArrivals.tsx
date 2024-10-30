@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Snackbar from "@mui/material/Snackbar"; // Import Snackbar for notifications
+import Snackbar from "@mui/material/Snackbar";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../store/favoriteSlice";
 import { addToCart } from "../store/cartSlice";
@@ -36,7 +36,7 @@ const ITEMS_PER_PAGE = 4;
 
 const NewArrivals: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [notification, setNotification] = useState<string | null>(null); // State for notification
+    const [notification, setNotification] = useState<string | null>(null);
     const favorites = useSelector((state: RootState) => state.favorites.items);
     const dispatch = useDispatch();
 
@@ -64,9 +64,9 @@ const NewArrivals: React.FC = () => {
                 img: product.img,
             })
         );
-        setNotification(`Added ${product.name} to cart!`); // Set notification message
+        setNotification(`Added ${product.name} to cart!`);
         setTimeout(() => {
-            setNotification(null); // Hide notification after 3 seconds
+            setNotification(null);
         }, 3000);
     };
 
