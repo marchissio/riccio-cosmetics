@@ -50,7 +50,7 @@ const RandomText = () => {
                     display: "flex",
                     flexDirection: { xs: "column", md: "row" },
                     gap: "30px",
-                    marginTop: location.pathname === "/about" ? "-100px" : "0",
+                    marginTop: location.pathname === "/about" ? "0px" : "0",
                     position: "relative",
                 }}
             >

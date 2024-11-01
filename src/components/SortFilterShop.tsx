@@ -2,9 +2,9 @@ import React from "react";
 import {
     Box,
     FormControl,
-    InputLabel,
     Select,
     MenuItem,
+    Typography,
     SelectChangeEvent,
 } from "@mui/material";
 
@@ -25,35 +25,44 @@ const SortFilterShop: React.FC<SortFilterProps> = ({
         <Box
             sx={{
                 display: "flex",
+                alignItems: "center",
                 justifyContent: "flex-end",
-                marginBottom: "20px",
-                marginRight: "400px",
+                marginBottom: "-30px",
+                marginRight: "360px",
             }}
         >
-            <FormControl variant="outlined" sx={{ minWidth: 120 }}>
-                <InputLabel id="sort-label">Sort By</InputLabel>
+            <Typography sx={{ marginRight: "8px", lineHeight: "26px" }}>
+                Sort By:
+            </Typography>
+            <FormControl variant="outlined">
                 <Select
-                    labelId="sort-label"
                     value={sortOrder}
                     onChange={handleSortChange}
-                    label="Sort By"
                     sx={{
-                        "& .MuiSelect-select": { backgroundColor: "#fff" },
-                        "& .MuiSelect-select:focus": {
+                        width: "180px",
+                        height: "30px",
+                        borderRadius: "50px",
+                        fontSize: "12px",
+                        padding: "0 15px",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "clip",
+                        "& .MuiSelect-select": {
                             backgroundColor: "#fff",
+                            paddingRight: "32px",
                         },
                         "& .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "#000",
+                            borderColor: "#cccccc",
                         },
                         "&:hover .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "#000",
+                            borderColor: "#cccccc",
                         },
                         "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                            borderColor: "#000",
+                            borderColor: "#cccccc",
                         },
-                        "& .MuiPaper-root": { backgroundColor: "#ffffff" },
                     }}
                     MenuProps={{
+                        disableScrollLock: true,
                         PaperProps: { sx: { bgcolor: "#ffffff" } },
                     }}
                 >

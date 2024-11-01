@@ -5,12 +5,18 @@ body {
     font-family: "Bebas Neue", sans-serif;
 }
 
+.body-scroll-lock {
+    overflow: hidden;
+    height: 100vh;
+}
+
 /* html {
     overflow: -moz-scrollbars-vertical !important;
     overflow-y: scroll !important;
 } */
 /* In your global CSS file */
-.css-1xomo8h-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+
+.css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
     background-color: transparent !important;
     box-shadow: none !important;
 }

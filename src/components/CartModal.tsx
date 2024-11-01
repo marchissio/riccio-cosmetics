@@ -27,18 +27,18 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
 
     useEffect(() => {
         if (open) {
-            // Add a class to lock body scroll
+
             document.body.classList.add("body-scroll-lock");
         } else {
-            // Remove the scroll lock class when modal closes
+   
             document.body.classList.remove("body-scroll-lock");
         }
 
-        // Cleanup function to remove the class when component unmounts
+
         return () => {
             document.body.classList.remove("body-scroll-lock");
         };
-    }, [open]);  
+    }, [open]);
 
     return (
         <Modal open={open} onClose={onClose}>
@@ -228,20 +228,20 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
                     </Box>
                     <Box
                         sx={{
-                            width: "43%", // Reduced button width
+                            width: "43%", 
                             backgroundColor: "#090909",
                             color: "#d0a97e",
-                            lineHeight: "20px", // Reduced line height
-                            padding: "8px 15px", // Reduced padding
+                            lineHeight: "20px", 
+                            padding: "8px 15px", 
                             textAlign: "center",
-                            fontSize: "12px", // Reduced font size
+                            fontSize: "12px", 
                             fontFamily: '"Oswald", sans-serif',
                             letterSpacing: "0.25px",
                             "&:hover": {
                                 backgroundColor: "#d0a97e",
                                 color: "#000000",
                             },
-                            ml: "10px", // Reduced margin-left
+                            ml: "10px", 
                         }}
                     >
                         <Link

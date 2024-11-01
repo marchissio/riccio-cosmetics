@@ -43,7 +43,7 @@ const Pages: React.FC<PagesProps> = ({ onClose }) => {
                 </Typography>
             </div>
             <div
-                style={{ ...menuItemStyles, marginBottom: "-1px" }} // Use negative margin to pull closer
+                style={{ ...menuItemStyles, marginBottom: "-1px" }} 
                 onClick={() => handleNavigate("/wishlist")}
                 onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor = "#333333")
@@ -57,7 +57,7 @@ const Pages: React.FC<PagesProps> = ({ onClose }) => {
                 </Typography>
             </div>
             <div
-                style={menuItemStyles} // Last item does not need margin
+                style={menuItemStyles} 
                 onClick={() => handleNavigate("/checkout")}
                 onMouseEnter={(e) =>
                     (e.currentTarget.style.backgroundColor = "#333333")

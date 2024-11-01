@@ -9,7 +9,7 @@ const ContactSection: React.FC = () => {
                 justifyContent: "center",
                 padding: "20px",
                 color: "white", 
-                marginTop: "-50px",
+                marginTop: "70px",
             }}
         >
             {/* Left Section - Black Box */}
@@ -103,11 +103,11 @@ const ContactSection: React.FC = () => {
                             borderRadius: "50px",
                             "& .MuiOutlinedInput-root": {
                                 borderRadius: "50px",
-                                paddingLeft: "25px", // Padding inside the input
+                                paddingLeft: "25px", 
                                 color: "#656565",
                             },
                             "& fieldset": {
-                                borderColor: "#ebebeb", // Border color
+                                borderColor: "#ebebeb", 
                             },
                         }}
                     />

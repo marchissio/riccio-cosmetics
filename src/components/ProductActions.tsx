@@ -5,13 +5,13 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import Box from "@mui/material/Box";
-import { Product } from "./interface/types"; // Adjust the import path as necessary
+import { Product } from "./interface/types"; 
 
 interface ProductActionsProps {
-    product: Product; // Product interface
-    isFavorited: boolean; // Whether the product is favorited
-    onToggleFavorite: (product: Product) => void; // Function to toggle favorite
-    onAddToCart: (product: Product) => void; // Function to add product to cart
+    product: Product; 
+    isFavorited: boolean; 
+    onToggleFavorite: (product: Product) => void; 
+    onAddToCart: (product: Product) => void; 
 }
 
 const ProductActions: React.FC<ProductActionsProps> = ({
@@ -21,7 +21,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
     onAddToCart,
 }) => {
     const handleFavorite = () => {
-        onToggleFavorite(product); // Toggle favorite state
+        onToggleFavorite(product); 
     };
 
     return (
@@ -36,7 +36,7 @@ const ProductActions: React.FC<ProductActionsProps> = ({
             <Box sx={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 {/* Add to Cart Button */}
                 <IconButton
-                    onClick={() => onAddToCart(product)} // Call the function to add product to cart
+                    onClick={() => onAddToCart(product)} 
                     sx={{
                         color: "#fff",
                         backgroundColor: "#333",

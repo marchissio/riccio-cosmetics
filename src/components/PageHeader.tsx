@@ -17,7 +17,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, subtitle }) => {
                     textAlign: "center",
                     fontSize: "1rem",
                     fontFamily: '"Oswald", sans-serif',
-                    marginBottom: "120px",
+                    marginBottom: "20px",
                     zIndex: 1100,
                 }}
             >
