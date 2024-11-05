@@ -117,7 +117,6 @@ const Shop: React.FC = () => {
                         sx={{
                             maxWidth: "1170px",
                             margin: "0 auto",
-                           
                         }}
                     >
                         {displayedProducts.map((product) => (
@@ -127,7 +126,7 @@ const Shop: React.FC = () => {
                                     display: "flex",
                                     alignItems: "flex-start",
                                     backgroundColor: "#f0f0f0",
-                                    margin: "30px 0", 
+                                    margin: "30px 0",
                                     border: "1px solid #ebebeb",
                                     padding: "25px",
                                     boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
@@ -197,7 +196,7 @@ const Shop: React.FC = () => {
                                         sx={{
                                             display: "flex",
                                             alignItems: "flex-start",
-                                            marginTop: "85px", 
+                                            marginTop: "85px",
                                             marginLeft: "1rem",
                                         }}
                                     >
@@ -220,11 +219,14 @@ const Shop: React.FC = () => {
                     // Product Grid View
                     <Box
                         sx={{
+                            marginTop: "100px",
                             display: "flex",
                             flexWrap: "wrap",
                             justifyContent: "center",
-                            maxWidth: "1200px",
+                            alignItems: "flex-start",
+                            gap: "12px",
                             margin: "0 auto",
+                            maxWidth: "1200px",
                         }}
                     >
                         {displayedProducts.length > 0 ? (
@@ -233,36 +235,38 @@ const Shop: React.FC = () => {
                                     key={product.id}
                                     sx={{
                                         flex: "1 0 23%",
-                                        margin: "0 0.3rem 1rem",
+                                        margin: "0 0 0 0",
                                         position: "relative",
                                     }}
                                 >
                                     <Box
                                         sx={{
-                                            width: "280px",
-                                            height: "350px",
+                                            border: "1px solid #ebebeb",
+                                            width: "270px",
+                                            height: "370px",
                                             backgroundColor: "#f4f4f4",
                                             display: "flex",
-                                            justifyContent: "center",
+                                            flexDirection: "column",
                                             alignItems: "center",
-                                            position: "relative",
+                                            justifyContent: "flex-start",
                                             overflow: "hidden",
+                                            position: "relative",
+                                            paddingTop: "20px",
                                             transition: "transform 0.3s ease",
-                                            "&:hover .overlay": { opacity: 1 },
+                                            "&:hover .overlay": {
+                                                opacity: 1,
+                                            },
                                         }}
                                     >
                                         <Box
                                             sx={{
-                                                width: "80%",
-                                                height: "90%",
+                                                width: "85%",
+                                                height: "85%",
                                                 backgroundColor: "#fff",
-                                                boxShadow:
-                                                    "0 4px 12px rgba(0, 0, 0, 0.1)",
                                                 display: "flex",
                                                 flexDirection: "column",
                                                 alignItems: "center",
                                                 justifyContent: "center",
-                                                position: "relative",
                                             }}
                                         >
                                             <img
@@ -274,64 +278,84 @@ const Shop: React.FC = () => {
                                                     objectFit: "cover",
                                                 }}
                                             />
+                                        </Box>
+                                        {/* Name and Price Section */}
+                                        <Box
+                                            sx={{
+                                                width: "100%",
+                                                textAlign: "center",
+                                                backgroundColor: "#f4f4f4",
+                                                padding: "10px 0",
+                                            }}
+                                        >
                                             <Typography
                                                 sx={{
-                                                    fontFamily:
-                                                        '"Oswald", sans-serif',
-                                                    fontWeight: "bold",
-                                                    fontSize: "1rem",
-                                                    marginTop: "10px",
+                                                    fontFamily: "Oswald",
+                                                    fontWeight: "400",
+                                                    fontSize: "18px",
+                                                    color: "#22222",
                                                 }}
                                             >
                                                 {product.name}
                                             </Typography>
+
+                                            {/* White Divider Line */}
+                                            <Box
+                                                sx={{
+                                                    width: "100%",
+                                                    height: "1px",
+                                                    backgroundColor: "#fff",
+                                                    margin: "8px auto",
+                                                }}
+                                            />
+
                                             <Typography
                                                 sx={{
                                                     fontFamily:
-                                                        '"Oswald", sans-serif',
-                                                    fontWeight: "normal",
-                                                    fontSize: "0.875rem",
-                                                    marginTop: "5px",
-                                                    color: "#000",
+                                                        '"Open-sans", sans-serif',
+                                                    fontSize: "18px",
+                                                    paddingBottom: "10px",
+                                                    lineHeight: "21px",
+                                                    color: "#22222",
+                                                    fontWeight: "500",
                                                 }}
                                             >
-                                                {`$${(
-                                                    product.price ?? 0
-                                                ).toFixed(2)}`}
+                                                $
+                                                {product.price
+                                                    ? product.price.toFixed(2)
+                                                    : "0.00"}
                                             </Typography>
-                                            <Box
-                                                className="overlay"
-                                                sx={{
-                                                    position: "absolute",
-                                                    top: 0,
-                                                    left: 0,
-                                                    right: 0,
-                                                    bottom: 0,
-                                                    backgroundColor:
-                                                        "rgba(0, 0, 0, 0.5)",
-                                                    display: "flex",
-                                                    justifyContent: "center",
-                                                    alignItems: "center",
-                                                    opacity: 0,
-                                                    transition:
-                                                        "opacity 0.3s ease",
-                                                }}
-                                            >
-                                                <ProductActions
-                                                    product={product}
-                                                    isFavorited={favorites.some(
-                                                        (item) =>
-                                                            item.id ===
-                                                            product.id
-                                                    )}
-                                                    onToggleFavorite={
-                                                        handleToggleFavorite
-                                                    }
-                                                    onAddToCart={
-                                                        handleAddToCart
-                                                    }
-                                                />
-                                            </Box>
+                                        </Box>
+
+                                        <Box
+                                            className="overlay"
+                                            sx={{
+                                                position: "absolute",
+                                                top: 0,
+                                                left: 0,
+                                                right: 0,
+                                                bottom: 0,
+                                                backgroundColor:
+                                                    "rgba(0, 0, 0, 0.6)",
+                                                color: "#fff",
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                opacity: 0,
+                                                transition: "opacity 0.3s ease",
+                                            }}
+                                        >
+                                            <ProductActions
+                                                product={product}
+                                                isFavorited={favorites.some(
+                                                    (item) =>
+                                                        item.id === product.id
+                                                )}
+                                                onToggleFavorite={
+                                                    handleToggleFavorite
+                                                }
+                                                onAddToCart={handleAddToCart}
+                                            />
                                         </Box>
                                     </Box>
                                 </Box>

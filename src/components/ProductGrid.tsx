@@ -66,11 +66,10 @@ const ProductGrid = () => {
                 marginLeft: "90px",
             }}
         >
-            {/* Popular Products Section */}
             <Box
                 sx={{
                     marginTop: "40px",
-                    marginLeft: "0px",
+                    marginLeft: "30px",
                     textAlign: "left",
                 }}
             >
@@ -86,12 +85,6 @@ const ProductGrid = () => {
                 >
                     Popular Products
                 </Typography>
-                <Box
-                    sx={{
-                        width: "100%",
-                        height: "4px",
-                    }}
-                />
                 <Typography
                     sx={{
                         fontFamily: '"Open-sans", sans-serif',
@@ -111,8 +104,9 @@ const ProductGrid = () => {
                     flexWrap: "wrap",
                     justifyContent: "center",
                     alignItems: "center",
-                    marginLeft: "calc(-1rem / 2)",
-                    marginRight: "calc(-1rem / 2)",
+                    gap: "8px", // Use a smaller gap between products
+                    marginLeft: "calc(2rem)", // Adjust side margins if necessary
+                    marginRight: "calc(2rem)", // Adjust side margins if necessary
                 }}
             >
                 {products.map((product) => (
@@ -120,39 +114,38 @@ const ProductGrid = () => {
                         key={product.id}
                         sx={{
                             flex: "1 0 21%",
-                            margin: "0 calc(1rem / 2) 1rem",
+                            margin: "0 calc(0.25rem) 0.5rem",
                             position: "relative",
                         }}
                     >
-                        {/* Grey Container */}
                         <Box
                             sx={{
-                                width: "280px",
-                                height: "350px",
+                                border: "1px solid #ebebeb",
+                                width: "270px",
+                                height: "370px", // Increased height to fit footer
                                 backgroundColor: "#f4f4f4",
                                 display: "flex",
-                                justifyContent: "center",
+                                flexDirection: "column",
                                 alignItems: "center",
-                                position: "relative",
+                                justifyContent: "flex-start",
                                 overflow: "hidden",
+                                position: "relative",
+                                paddingTop: "20px",
                                 transition: "transform 0.3s ease",
                                 "&:hover .overlay": {
                                     opacity: 1,
                                 },
                             }}
                         >
-                            {/* Product Card */}
                             <Box
                                 sx={{
-                                    width: "75%",
-                                    height: "90%",
+                                    width: "85%",
+                                    height: "85%",
                                     backgroundColor: "#fff",
-                                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "center",
                                     justifyContent: "center",
-                                    position: "relative",
                                 }}
                             >
                                 <img
@@ -164,50 +157,83 @@ const ProductGrid = () => {
                                         objectFit: "cover",
                                     }}
                                 />
+                            </Box>
+                            {/* Name and Price Section */}
+                            <Box
+                                sx={{
+                                    width: "100%",
+                                    textAlign: "center",
+                                    backgroundColor: "#f4f4f4",
+                                    padding: "10px 0",
+                                }}
+                            >
                                 <Typography
                                     sx={{
-                                        fontFamily: '"Oswald", sans-serif',
-                                        fontWeight: "bold",
-                                        fontSize: "1rem",
-                                        marginTop: "10px",
+                                        fontFamily: "Oswald",
+                                        fontWeight: "400",
+                                        fontSize: "18px",
+                                        color: "#22222",
                                     }}
                                 >
                                     {product.name}
                                 </Typography>
 
+                                {/* White Divider Line */}
                                 <Box
-                                    className="overlay"
                                     sx={{
-                                        position: "absolute",
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
-                                        backgroundColor: "rgba(0, 0, 0, 0.6)",
-                                        color: "#fff",
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        opacity: 0,
-                                        transition: "opacity 0.3s ease",
+                                        width: "100%", // Adjust width as needed
+                                        height: "1px",
+                                        backgroundColor: "#fff",
+                                        margin: "8px auto", // Centered and with margin
+                                    }}
+                                />
+
+                                <Typography
+                                    sx={{
+                                        fontFamily: '"Open-sans", sans-serif',
+                                        fontSize: "18px",
+                                        paddingBottom: "10px",
+                                        lineHeight: "21px",
+                                        color: "#22222",
+                                        fontWeight: "500",
                                     }}
                                 >
-                                    <ProductActions
-                                        product={product}
-                                        isFavorited={isProductFavorited(
-                                            product.id
-                                        )}
-                                        onToggleFavorite={handleToggleFavorite}
-                                        onAddToCart={handleAddToCart}
-                                    />
-                                </Box>
+                                    $
+                                    {product.price
+                                        ? product.price.toFixed(2)
+                                        : "0.00"}
+                                </Typography>
+                            </Box>
+
+                            <Box
+                                className="overlay"
+                                sx={{
+                                    position: "absolute",
+                                    top: 0,
+                                    left: 0,
+                                    right: 0,
+                                    bottom: 0,
+                                    backgroundColor: "rgba(0, 0, 0, 0.6)",
+                                    color: "#fff",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    opacity: 0,
+                                    transition: "opacity 0.3s ease",
+                                }}
+                            >
+                                <ProductActions
+                                    product={product}
+                                    isFavorited={isProductFavorited(product.id)}
+                                    onToggleFavorite={handleToggleFavorite}
+                                    onAddToCart={handleAddToCart}
+                                />
                             </Box>
                         </Box>
                     </Box>
                 ))}
             </Box>
 
-            {/* Snackbar for notifications */}
             <Snackbar
                 open={Boolean(notification)}
                 message={notification}

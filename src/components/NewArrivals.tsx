@@ -44,6 +44,10 @@ const NewArrivals: React.FC = () => {
         setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
     };
 
+    const isProductFavorited = (id: number) => {
+        return favorites.some((item) => item.id === id);
+    };
+
     const handleNext = () => {
         setCurrentIndex((prevIndex) =>
             Math.min(prevIndex + 1, products.length - ITEMS_PER_PAGE)
@@ -76,45 +80,54 @@ const NewArrivals: React.FC = () => {
                 padding: "50px",
                 paddingLeft: "100px",
                 paddingRight: "100px",
+
                 backgroundColor: "#fff",
                 textAlign: "left",
             }}
         >
-            <Typography
-                variant="h4"
+            <Box
                 sx={{
-                    fontFamily: '"Oswald", sans-serif',
-                    fontWeight: "bold",
-                    marginBottom: "20px",
-                    marginLeft: "15%",
+                    marginTop: "40px",
+                    marginLeft: "30px",
+                    textAlign: "left",
                 }}
             >
-                New Arrivals
-            </Typography>
+                <Typography
+                    variant="h4"
+                    sx={{
+                        fontFamily: '"Oswald", sans-serif',
+                        fontWeight: "bold",
+                        marginBottom: "20px",
+                        marginLeft: "15%",
+                    }}
+                >
+                    New Arrivals
+                </Typography>
 
-            <Typography
-                variant="body1"
-                sx={{
-                    fontFamily: '"Open-sans", sans-serif',
-                    fontSize: "15px",
-                    marginBottom: "40px",
-                    marginLeft: "15%",
-                }}
-            >
-                Some of our customers say that they trust us and buy our product
-                without any <br /> hesitation because they believe in us and are
-                always happy to buy our products.
-            </Typography>
+                <Typography
+                    variant="body1"
+                    sx={{
+                        fontFamily: '"Open-sans", sans-serif',
+                        fontSize: "15px",
+                        marginBottom: "50px",
+                        marginLeft: "15%",
+                    }}
+                >
+                    Some of our customers say that they trust us and buy our
+                    product without any <br /> hesitation because they believe
+                    in us and are always happy to buy our products.
+                </Typography>
+            </Box>
 
             <Box
                 sx={{
                     display: "flex",
+                    flexWrap: "wrap",
                     justifyContent: "center",
                     alignItems: "center",
-                    position: "relative",
-                    maxWidth: "100%",
-                    margin: "0 auto",
-                    overflow: "hidden",
+                    gap: "8px", // Use a smaller gap between products
+                    marginLeft: "calc(2rem)", // Adjust side margins if necessary
+                    marginRight: "calc(2rem)", // Adjust side margins if necessary
                 }}
             >
                 <IconButton
@@ -159,12 +172,17 @@ const NewArrivals: React.FC = () => {
                                     flexBasis: "calc(100% / 4)",
                                     flexShrink: 0,
                                     position: "relative",
+                                    "&:hover .overlay": {
+                                        opacity: 1, // Make overlay visible on hover
+                                    },
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        width: "87%",
-                                        height: "350px",
+                                        border: "1px solid #ebebeb",
+                                        paddingTop: "20px",
+                                        width: "88%",
+                                        height: "370px",
                                         backgroundColor: "#f4f4f4",
                                         display: "flex",
                                         justifyContent: "center",
@@ -172,22 +190,17 @@ const NewArrivals: React.FC = () => {
                                         position: "relative",
                                         overflow: "hidden",
                                         transition: "transform 0.3s ease",
-                                        "&:hover .overlay": {
-                                            opacity: 1,
-                                        },
+                                        flexDirection: "column", // Ensure the direction is column
                                     }}
                                 >
                                     <Box
                                         sx={{
-                                            width: "77%",
-                                            height: "90%",
+                                            width: "85%",
+                                            height: "85%",
                                             backgroundColor: "#fff",
-                                            boxShadow:
-                                                "0 4px 12px rgba(0, 0, 0, 0.1)",
                                             display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
                                             justifyContent: "center",
+                                            alignItems: "center",
                                             position: "relative",
                                         }}
                                     >
@@ -200,61 +213,85 @@ const NewArrivals: React.FC = () => {
                                                 objectFit: "cover",
                                             }}
                                         />
+                                    </Box>
+
+                                    {/* Name and Price Section moved below the image */}
+                                    <Box
+                                        sx={{
+                                            width: "100%",
+                                            textAlign: "center",
+                                            backgroundColor: "#f4f4f4",
+                                            padding: "10px 0",
+                                            // Add some spacing from the image
+                                        }}
+                                    >
                                         <Typography
                                             sx={{
-                                                fontFamily:
-                                                    '"Oswald", sans-serif',
-                                                fontWeight: "bold",
-                                                fontSize: "1rem",
-                                                marginTop: "10px",
+                                                fontFamily: "Oswald",
+                                                fontWeight: "400",
+                                                fontSize: "18px",
+                                                color: "#22222",
                                             }}
                                         >
                                             {product.name}
                                         </Typography>
-                                        {product.price && (
-                                            <Typography
-                                                sx={{
-                                                    fontFamily:
-                                                        '"Open-sans", sans-serif',
-                                                    fontSize: "0.9rem",
-                                                    color: "#333",
-                                                    marginTop: "5px",
-                                                }}
-                                            >
-                                                ${product.price.toFixed(2)}
-                                            </Typography>
-                                        )}
 
+                                        {/* White Divider Line */}
                                         <Box
-                                            className="overlay"
                                             sx={{
-                                                position: "absolute",
-                                                top: 0,
-                                                left: 0,
-                                                right: 0,
-                                                bottom: 0,
-                                                backgroundColor:
-                                                    "rgba(0, 0, 0, 0.6)",
-                                                color: "#fff",
-                                                display: "flex",
-                                                justifyContent: "center",
-                                                alignItems: "center",
-                                                opacity: 0,
-                                                transition: "opacity 0.3s ease",
+                                                width: "100%",
+                                                height: "1px",
+                                                backgroundColor: "#fff",
+                                                margin: "8px auto",
+                                            }}
+                                        />
+
+                                        <Typography
+                                            sx={{
+                                                fontFamily:
+                                                    '"Open-sans", sans-serif',
+                                                fontSize: "18px",
+                                                paddingBottom: "10px",
+                                                lineHeight: "21px",
+                                                color: "#22222",
+                                                fontWeight: "500",
                                             }}
                                         >
-                                            <ProductActions
-                                                product={product}
-                                                isFavorited={favorites.some(
-                                                    (item) =>
-                                                        item.id === product.id
-                                                )}
-                                                onToggleFavorite={
-                                                    handleToggleFavorite
-                                                }
-                                                onAddToCart={handleAddToCart}
-                                            />
-                                        </Box>
+                                            $
+                                            {product.price
+                                                ? product.price.toFixed(2)
+                                                : "0.00"}
+                                        </Typography>
+                                    </Box>
+
+                                    <Box
+                                        className="overlay"
+                                        sx={{
+                                            position: "absolute",
+                                            top: 0,
+                                            left: 0,
+                                            right: 0,
+                                            bottom: 0,
+                                            backgroundColor:
+                                                "rgba(0, 0, 0, 0.6)",
+                                            color: "#fff",
+                                            display: "flex",
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            opacity: 0,
+                                            transition: "opacity 0.3s ease",
+                                        }}
+                                    >
+                                        <ProductActions
+                                            product={product}
+                                            isFavorited={isProductFavorited(
+                                                product.id
+                                            )}
+                                            onToggleFavorite={
+                                                handleToggleFavorite
+                                            }
+                                            onAddToCart={handleAddToCart}
+                                        />
                                     </Box>
                                 </Box>
                             </Box>
