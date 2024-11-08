@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const CartTable: React.FC = () => {
     const dispatch = useDispatch();
     const cart = useSelector((state: RootState) => state.cart.items);
+    const navigate = useNavigate();
 
     const handleRemoveFromCart = (item: CartProduct) => {
         dispatch(removeFromCart(item.id));
@@ -18,12 +19,7 @@ const CartTable: React.FC = () => {
     const handleIncrement = (id: number) => {
         const product = cart.find((item) => item.id === id);
         if (product) {
-            dispatch(
-                addToCart({
-                    ...product,
-                    quantity: 1,
-                })
-            );
+            dispatch(addToCart({ ...product, quantity: 1 }));
         }
     };
 
@@ -31,21 +27,15 @@ const CartTable: React.FC = () => {
         const product = cart.find((item) => item.id === id);
         if (product) {
             if (product.quantity > 1) {
-                dispatch(
-                    addToCart({
-                        ...product,
-                        quantity: -1,
-                    })
-                );
+                dispatch(addToCart({ ...product, quantity: -1 }));
             } else {
                 handleRemoveFromCart(product);
             }
         }
     };
 
-    const navigate = useNavigate();
     const handleCheckout = () => {
-        navigate("/checkout");
+        navigate("/checkout", { state: { scrollToTop: true } });
     };
 
     const quantities = cart.reduce((acc, item) => {
@@ -56,7 +46,6 @@ const CartTable: React.FC = () => {
     const subtotal = cart
         .reduce((total, item) => total + (item.price || 0) * item.quantity, 0)
         .toFixed(2);
-
     const shippingCost = 0.0;
     const grandTotal = (parseFloat(subtotal) + shippingCost).toFixed(2);
 
@@ -79,12 +68,7 @@ const CartTable: React.FC = () => {
                     width: "100%",
                 }}
             >
-                <Box
-                    sx={{
-                        width: "100%",
-                        maxWidth: "1200px",
-                    }}
-                >
+                <Box sx={{ width: "100%", maxWidth: "1200px" }}>
                     <ProductTable
                         products={cart}
                         quantities={quantities}

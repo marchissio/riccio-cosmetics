@@ -97,13 +97,14 @@ const NewArrivals: React.FC = () => {
                     sx={{
                         fontFamily: '"Oswald", sans-serif',
                         fontWeight: "bold",
-                        marginBottom: "20px",
+                        borderBottom: "6px solid #f5c242",
+                        display: "inline-block",
+                        marginBottom: "10px",
                         marginLeft: "15%",
                     }}
                 >
                     New Arrivals
                 </Typography>
-
                 <Typography
                     variant="body1"
                     sx={{
@@ -125,9 +126,9 @@ const NewArrivals: React.FC = () => {
                     flexWrap: "wrap",
                     justifyContent: "center",
                     alignItems: "center",
-                    gap: "8px", // Use a smaller gap between products
-                    marginLeft: "calc(2rem)", // Adjust side margins if necessary
-                    marginRight: "calc(2rem)", // Adjust side margins if necessary
+                    gap: "8px",
+                    marginLeft: "calc(2rem)",
+                    marginRight: "calc(2rem)",
                 }}
             >
                 <IconButton
@@ -135,7 +136,7 @@ const NewArrivals: React.FC = () => {
                     disabled={currentIndex === 0}
                     sx={{
                         position: "absolute",
-                        left: "100px",
+                        left: "200px",
                         zIndex: 1,
                         backgroundColor: "#fff",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -173,7 +174,7 @@ const NewArrivals: React.FC = () => {
                                     flexShrink: 0,
                                     position: "relative",
                                     "&:hover .overlay": {
-                                        opacity: 1, // Make overlay visible on hover
+                                        opacity: 1,
                                     },
                                 }}
                             >
@@ -190,7 +191,7 @@ const NewArrivals: React.FC = () => {
                                         position: "relative",
                                         overflow: "hidden",
                                         transition: "transform 0.3s ease",
-                                        flexDirection: "column", // Ensure the direction is column
+                                        flexDirection: "column",
                                     }}
                                 >
                                     <Box
@@ -215,14 +216,12 @@ const NewArrivals: React.FC = () => {
                                         />
                                     </Box>
 
-                                    {/* Name and Price Section moved below the image */}
                                     <Box
                                         sx={{
                                             width: "100%",
                                             textAlign: "center",
                                             backgroundColor: "#f4f4f4",
                                             padding: "10px 0",
-                                            // Add some spacing from the image
                                         }}
                                     >
                                         <Typography
@@ -304,7 +303,7 @@ const NewArrivals: React.FC = () => {
                     disabled={currentIndex >= products.length - ITEMS_PER_PAGE}
                     sx={{
                         position: "absolute",
-                        right: "100px",
+                        right: "180px",
                         zIndex: 1,
                         backgroundColor: "#fff",
                         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",

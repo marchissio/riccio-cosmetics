@@ -27,13 +27,10 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
 
     useEffect(() => {
         if (open) {
-
             document.body.classList.add("body-scroll-lock");
         } else {
-   
             document.body.classList.remove("body-scroll-lock");
         }
-
 
         return () => {
             document.body.classList.remove("body-scroll-lock");
@@ -228,24 +225,25 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
                     </Box>
                     <Box
                         sx={{
-                            width: "43%", 
+                            width: "43%",
                             backgroundColor: "#090909",
                             color: "#d0a97e",
-                            lineHeight: "20px", 
-                            padding: "8px 15px", 
+                            lineHeight: "20px",
+                            padding: "8px 15px",
                             textAlign: "center",
-                            fontSize: "12px", 
+                            fontSize: "12px",
                             fontFamily: '"Oswald", sans-serif',
                             letterSpacing: "0.25px",
                             "&:hover": {
                                 backgroundColor: "#d0a97e",
                                 color: "#000000",
                             },
-                            ml: "10px", 
+                            ml: "10px",
                         }}
                     >
                         <Link
                             to="/checkout"
+                            onClick={() => onClose()}
                             style={{
                                 textDecoration: "none",
                                 color: "inherit",

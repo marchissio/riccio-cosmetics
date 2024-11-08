@@ -50,7 +50,7 @@ const FooterServices: React.FC = () => {
                 maxWidth: "1450px",
                 marginLeft: "auto",
                 marginRight: "auto",
-                border: "2px solid #ebebeb",
+                border: "1px solid #ebebeb",
             }}
         >
             {services.map((service, index) => (

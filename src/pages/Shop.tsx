@@ -59,7 +59,7 @@ const Shop: React.FC = () => {
         setNotification(`Added ${product.name} to cart!`);
         setTimeout(() => {
             setNotification(null);
-        }, 3000);
+        }, 2000);
     };
 
     const handleSortChange = (order: string) => {
@@ -125,7 +125,7 @@ const Shop: React.FC = () => {
                                 sx={{
                                     display: "flex",
                                     alignItems: "flex-start",
-                                    backgroundColor: "#f0f0f0",
+                                    backgroundColor: "#f4f4f4",
                                     margin: "30px 0",
                                     border: "1px solid #ebebeb",
                                     padding: "25px",

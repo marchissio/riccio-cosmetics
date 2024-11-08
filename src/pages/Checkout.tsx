@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
@@ -20,6 +20,10 @@ const Checkout: React.FC = () => {
         color: "#222222",
     };
 
+ 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, []);
     return (
         <Box>
             {/* Page Title */}
@@ -43,7 +47,7 @@ const Checkout: React.FC = () => {
                         flex: 1,
                         marginRight: "70px",
                         backgroundColor: "#fff",
-                        padding: "30px", // Optional padding for better spacing
+                        padding: "30px", 
                     }}
                 >
                     <Typography

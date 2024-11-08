@@ -74,11 +74,11 @@ const ProductGrid = () => {
                 }}
             >
                 <Typography
-                    variant="h5"
+                    variant="h4"
                     sx={{
                         fontFamily: '"Oswald", sans-serif',
                         fontWeight: "bold",
-                        borderBottom: "4px solid #f5c242",
+                        borderBottom: "6px solid #f5c242",
                         display: "inline-block",
                         marginBottom: "10px",
                     }}
@@ -104,9 +104,9 @@ const ProductGrid = () => {
                     flexWrap: "wrap",
                     justifyContent: "center",
                     alignItems: "center",
-                    gap: "8px", // Use a smaller gap between products
-                    marginLeft: "calc(2rem)", // Adjust side margins if necessary
-                    marginRight: "calc(2rem)", // Adjust side margins if necessary
+                    gap: "8px",
+                    marginLeft: "calc(2rem)",
+                    marginRight: "calc(2rem)",
                 }}
             >
                 {products.map((product) => (
@@ -122,7 +122,7 @@ const ProductGrid = () => {
                             sx={{
                                 border: "1px solid #ebebeb",
                                 width: "270px",
-                                height: "370px", // Increased height to fit footer
+                                height: "370px",
                                 backgroundColor: "#f4f4f4",
                                 display: "flex",
                                 flexDirection: "column",
@@ -181,10 +181,10 @@ const ProductGrid = () => {
                                 {/* White Divider Line */}
                                 <Box
                                     sx={{
-                                        width: "100%", // Adjust width as needed
+                                        width: "100%",
                                         height: "1px",
                                         backgroundColor: "#fff",
-                                        margin: "8px auto", // Centered and with margin
+                                        margin: "8px auto",
                                     }}
                                 />
 
