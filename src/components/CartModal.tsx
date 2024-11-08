@@ -196,62 +196,56 @@ const CartModal: React.FC<CartModalProps> = ({ open, onClose }) => {
                         justifyContent: "space-between",
                     }}
                 >
-                    <Box
-                        sx={{
-                            width: "43%",
-                            backgroundColor: "#090909",
-                            color: "#d0a97e",
-                            lineHeight: "20px",
-                            padding: "8px 15px",
-                            textAlign: "center",
-                            fontSize: "12px",
-                            fontFamily: '"Oswald", sans-serif',
-                            letterSpacing: "0.25px",
-                            "&:hover": {
-                                backgroundColor: "#d0a97e",
-                                color: "#000000",
-                            },
-                        }}
+                    <Link
+                        to="/cart"
+                        style={{ width: "43%", textDecoration: "none" }}
                     >
-                        <Link
-                            to="/cart"
-                            style={{
-                                textDecoration: "none",
-                                color: "inherit",
+                        <Box
+                            sx={{
+                                backgroundColor: "#090909",
+                                color: "#d0a97e",
+                                lineHeight: "20px",
+                                padding: "8px 15px",
+                                textAlign: "center",
+                                fontSize: "12px",
+                                fontFamily: '"Oswald", sans-serif',
+                                letterSpacing: "0.25px",
+                                cursor: "pointer",
+                                "&:hover": {
+                                    backgroundColor: "#d0a97e",
+                                    color: "#000000",
+                                },
                             }}
                         >
                             View Cart
-                        </Link>
-                    </Box>
-                    <Box
-                        sx={{
-                            width: "43%",
-                            backgroundColor: "#090909",
-                            color: "#d0a97e",
-                            lineHeight: "20px",
-                            padding: "8px 15px",
-                            textAlign: "center",
-                            fontSize: "12px",
-                            fontFamily: '"Oswald", sans-serif',
-                            letterSpacing: "0.25px",
-                            "&:hover": {
-                                backgroundColor: "#d0a97e",
-                                color: "#000000",
-                            },
-                            ml: "10px",
-                        }}
+                        </Box>
+                    </Link>
+                    <Link
+                        to="/checkout"
+                        onClick={onClose}
+                        style={{ width: "43%", textDecoration: "none" }}
                     >
-                        <Link
-                            to="/checkout"
-                            onClick={() => onClose()}
-                            style={{
-                                textDecoration: "none",
-                                color: "inherit",
+                        <Box
+                            sx={{
+                                backgroundColor: "#090909",
+                                color: "#d0a97e",
+                                lineHeight: "20px",
+                                padding: "8px 15px",
+                                textAlign: "center",
+                                fontSize: "12px",
+                                fontFamily: '"Oswald", sans-serif',
+                                letterSpacing: "0.25px",
+                                cursor: "pointer",
+                                "&:hover": {
+                                    backgroundColor: "#d0a97e",
+                                    color: "#000000",
+                                },
+                                ml: "10px",
                             }}
                         >
                             Checkout
-                        </Link>
-                    </Box>
+                        </Box>
+                    </Link>
                 </Box>
             </Box>
         </Modal>

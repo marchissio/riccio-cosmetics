@@ -12,8 +12,8 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, subtitle }) => {
             <Box
                 sx={{
                     backgroundColor: "#0b1521",
-                    color: "#fff",
-                    padding: "95px",
+                    color: "#d8d8d8",
+                    padding: "60px",
                     textAlign: "center",
                     fontSize: "1rem",
                     fontFamily: '"Oswald", sans-serif',
@@ -24,8 +24,9 @@ const PageHeader: React.FC<PageHeaderProps> = ({ title, subtitle }) => {
                 <h1
                     style={{
                         fontFamily: '"Oswald", sans-serif',
-                        fontSize: "2rem",
-                        fontWeight: "bold",
+                        fontSize: "48px",
+                        fontWeight: "500",
+                        letterSpacing: "0.1px",
                         paddingTop: "20px",
                     }}
                 >

@@ -199,7 +199,7 @@ const RandomText = () => {
                                     boxShadow:
                                         "rgba(0, 0, 0, 0.24) 0 2px 2px, rgba(0, 0, 0, 0.4) 0 8px 12px",
                                     "&:hover": {
-                                        backgroundColor: "#f5c242",
+                                        backgroundColor: "#d0a97e",
                                         color: "#222222",
                                         border: "1px solid #f5c242",
                                     },

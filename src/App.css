@@ -10,6 +10,12 @@ body {
     height: 100vh;
 }
 
+img[src$="beardLogo.png"] {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
 /* html {
     overflow: -moz-scrollbars-vertical !important;
     overflow-y: scroll !important;

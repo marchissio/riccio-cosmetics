@@ -9,7 +9,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge from "@mui/material/Badge";
 import HeartIcon from "../components/HeartIcon";
 import CartModal from "./CartModal";
-import logo from "../assets/buba.jpg";
+import logo from "../assets/beardLogo.webp";
 import { Routes } from "../enums/routes";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store/store";
@@ -71,7 +71,7 @@ const Navbar: React.FC = () => {
         <AppBar
             position="absolute"
             sx={{
-                backgroundColor: "#bf9b5c",
+                backgroundColor: "#d0a97e",
                 boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
                 zIndex: 1000,
                 fontFamily: '"Oswald", sans-serif',
@@ -88,13 +88,30 @@ const Navbar: React.FC = () => {
                     height: "80px",
                 }}
             >
-                <Box sx={{ display: "flex", alignItems: "center" }}>
-                    <img
-                        src={logo}
-                        alt="Logo"
-                        style={{ height: "45px", cursor: "pointer" }}
-                        onClick={() => navigate("/")}
-                    />
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        background: "transparent",
+                    }}
+                >
+                    <picture>
+                        <source srcSet={logo} type="image/webp" />
+                        <img
+                            // src="/path/to/fallback/logo.png"
+                            alt="Logo"
+                            style={{
+                                height: "45px",
+                                cursor: "pointer",
+                                backgroundColor: "transparent",
+                                border: "none",
+                                boxShadow: "none",
+                                display: "block",
+                                WebkitAppearance: "none",
+                            }}
+                            onClick={() => navigate("/")}
+                        />
+                    </picture>
                 </Box>
 
                 <Box
@@ -119,14 +136,14 @@ const Navbar: React.FC = () => {
                                     fontWeight: "600",
                                     fontSize: "16px",
                                     lineHeight: "30px",
-                                    letterSpacing: "0.50px",
+                                    letterSpacing: "0.25px",
                                     color: "black",
                                     fontFamily: '"Oswald", sans-serif',
                                     padding: "25px 0",
                                 }}
                                 onClick={() => {
                                     setCartModalOpen(false);
-                                    handlePagesClose(); 
+                                    handlePagesClose();
                                 }}
                             >
                                 {key}
@@ -141,7 +158,7 @@ const Navbar: React.FC = () => {
                                 fontWeight: "600",
                                 fontSize: "16px",
                                 lineHeight: "30px",
-                                letterSpacing: "0.50px",
+                                letterSpacing: "0.25px",
                                 color: "black",
                                 fontFamily: '"Oswald", sans-serif',
                                 padding: "25px 0",
@@ -168,27 +185,80 @@ const Navbar: React.FC = () => {
                     </Box>
                 </Box>
 
-                <Box sx={{ display: "flex", gap: "1rem" }}>
+                <Box
+                    sx={{ display: "flex", gap: "1rem", position: "relative" }}
+                >
+                    {/* Wishlist Icon */}
                     <IconButton onClick={handleOpenWishlist}>
-                        <Badge badgeContent={favoriteCount} color="error">
-                            <HeartIcon
-                                style={{
-                                    width: "24px",
-                                    height: "24px",
-                                    fill: "transparent",
-                                    stroke: "black",
-                                    strokeWidth: "2",
-                                }}
-                            />
-                        </Badge>
+                        <HeartIcon
+                            style={{
+                                width: "24px",
+                                height: "24px",
+                                fill: "transparent",
+                                stroke: "black",
+                                strokeWidth: "2",
+                            }}
+                        />
+                        {/* Count in a smaller circle */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                top: "-4px",
+                                right: "-4px",
+                                backgroundColor: "#f4f4f4",
+                                borderRadius: "100%",
+                                padding: "2px 5px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: "12px",
+                                lineHeight: "16px",
+                                fontWeight: 600,
+                                letterSpacing: "0.25px",
+                                fontFamily: '"Oswald", sans-serif',
+                                color: "#222222",
+                                border: "2px solid #d0a97e",
+                            }}
+                        >
+                            {favoriteCount}
+                        </Box>
                     </IconButton>
+
+                    {/* Shopping Cart Icon with Count and Price */}
                     <IconButton
                         sx={{ color: "black" }}
                         onClick={handleCartClick}
                     >
-                        <Badge badgeContent={totalQuantity} color="error">
-                            <ShoppingCartIcon />
-                        </Badge>
+                        <Box sx={{ display: "flex", alignItems: "center" }}>
+                            <ShoppingCartIcon
+                                sx={{ width: "24px", height: "24px" }}
+                            />
+                            {/* Display count and price next to the cart icon */}
+                            <Box
+                                sx={{
+                                    marginLeft: "8px",
+                                    fontSize: "16px",
+                                    lineHeight: "30px",
+                                    fontWeight: 600,
+                                    letterSpacing: "0.25px",
+                                    fontFamily: '"Oswald", sans-serif',
+                                    color: "#222222",
+                                }}
+                            >
+                                <span>
+                                    {totalQuantity} - $
+                                    {cartItems
+                                        .reduce(
+                                            (total, item) =>
+                                                total +
+                                                (item.price || 0) *
+                                                    item.quantity,
+                                            0
+                                        )
+                                        .toFixed(2)}
+                                </span>
+                            </Box>
+                        </Box>
                     </IconButton>
                 </Box>
             </Toolbar>
